@@ -175,7 +175,7 @@ Player.prototype.draw = function() {
             } else {
                 stroke(101, 67, 33, 0.5);
             }
-            line(player.x + cos(player.r) * 45 - cam.x, player.y + sin(player.r) * 45 - cam.y, player.x + cos(player.r) * 30 - cam.x, player.y + sin(player.r) * 30 - cam.y);
+            line(player.x + cos(player.r) * 45 - cam.x, player.y + sin(player.r) * 45 - cam.y, player.x + cos(player.r) * 20 - cam.x, player.y + sin(player.r) * 20 - cam.y);
             strokeWeight(10)
             if(this.attacking) {
                 stroke(100, 100, 100);
@@ -200,7 +200,7 @@ Player.prototype.draw = function() {
                 stroke(100, 100, 100, 0.5);
             }
             fill(220, 175, 120);
-            ellipse(player.x + cos(player.r) * 35 - cam.x, player.y + sin(player.r) * 35 - cam.y, 10, 10, 0)
+            ellipse(player.x + cos(player.r) * 25 - cam.x, player.y + sin(player.r) * 25 - cam.y, 10, 10, 0)
             line(player.x + cos(player.r) * 55 - cam.x, player.y + sin(player.r) * 55 - cam.y, player.x + cos(player.r) * 125 - cam.x, player.y + sin(player.r) * 125 - cam.y);
             fill(255, 200, 155);
             ellipse(player.x + cos(player.r) * 40 - cam.x, player.y + sin(player.r) * 40 - cam.y, 10, 10, 0)
