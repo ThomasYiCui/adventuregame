@@ -26,6 +26,7 @@ var rockGiants = 0;
 var rockPeople = 0;
 var allySlimes = 0;
 var GoblinBoss = 0;
+var swordElves = 0;
 var frameCount = 0;
 var orcs = 0;
 var kingSlimes = 0;
@@ -773,7 +774,7 @@ function draw() {
                     npcs.push(new npc(random(-2000, 2000), random(-10000, -11000), "Elf", "nuetral"))
                 }
                 if(swordElves < 10) {
-                    npcs.push(new npc(random(-2000, 2000), random(-10000, -11000), "Elf Warrior", "nuetral"))
+                    //npcs.push(new npc(random(-2000, 2000), random(-10000, -11000), "Elf Warrior", "nuetral"))
                 }
             }
             if(frameCount % 500 === 0) {
