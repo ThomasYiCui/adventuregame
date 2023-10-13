@@ -79,7 +79,6 @@ function Player() {
     this.weponSpd = 0;
     this.chooseUpgrade = false;
     this.dashCool = 100;
-    this.upgrades = 5000;
 };
 player = new Player();
 Player.prototype.draw = function() {
