@@ -4,6 +4,7 @@ function projectile(x, y, r, type, team) {
     this.y = y;
     this.r = r;
     this.type = type;
+    console.log(type)
     this.size = projectileStats[type].size;
     this.dmg = projectileStats[type].dmg;
     this.life = projectileStats[type].range;
@@ -64,7 +65,7 @@ projectile.prototype.draw = function() {
         stroke(0, 0, 0, this.life/400);
         strokeWeight(3);
         eEllipse(this.x - cam.x, this.y - cam.y, this.size + 3, this.size + 3, 0);
-        fill(250, 250, 100, this.llife/400);
+        fill(250, 250, 100, this.life/400);
         ellipse(this.x - cam.x, this.y - cam.y, this.size - this.life/250, this.size - this.life/250, 0);
     } else if(this.type == "elf arrow") {
         stroke(0, 0, 0);
@@ -74,6 +75,9 @@ projectile.prototype.draw = function() {
         stroke(0, 0, 0);
         strokeWeight(5);
         line(this.x - cam.x - cos(this.r) * this.size/2, this.y - cam.y - sin(this.r) * this.size/2, this.x - cam.x + cos(this.r) * this.size/2, this.y - cam.y + sin(this.r) * this.size/2);
+    } else if(this.type == "Lightning Ball") {
+        fill(0, 0, 250, 200);
+        ellipse(this.x - cam.x, this.y - cam.y, 30, 30, 0);
     }
 };
 projectile.prototype.update = function() {
@@ -106,10 +110,14 @@ projectile.prototype.collide = function(t) {
                         break;
                     }
                 }
-                if(this.effects[i][0] == "lightning" && player.mana >= player.maxMana/50) {
-                    player.mana-=player.maxMana/50;
-                    projectileStats["lightning"].dmg = player.maxMana/150;
-                    stroke(50, 100, 255);
+                if(this.effects[i][0] == "lightningS" && player.mana >= 50) {
+                    player.mana-=50;
+                    stroke(50, 100, 255, 200);
+                    strokeWeight(10);
+                    line(t.x - cam.x, t.y - cam.y, this.x - cam.x, this.y - cam.y);
+                } else if(this.effects[i][0] == "lightning" && player.mana >= 50) {
+                    player.mana-=50;
+                    stroke(50, 100, 255, 200);
                     strokeWeight(10);
                     line(t.x - cam.x, t.y - cam.y, this.x - cam.x, this.y - cam.y);
                 }
