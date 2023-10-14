@@ -4,7 +4,6 @@ function projectile(x, y, r, type, team) {
     this.y = y;
     this.r = r;
     this.type = type;
-    console.log(type)
     this.size = projectileStats[type].size;
     this.dmg = projectileStats[type].dmg;
     this.life = projectileStats[type].range;
