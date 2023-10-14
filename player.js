@@ -79,7 +79,6 @@ function Player() {
     this.weponSpd = 0;
     this.chooseUpgrade = false;
     this.dashCool = 100;
-    this.upgrades = 0;
 };
 player = new Player();
 Player.prototype.draw = function() {
@@ -488,38 +487,22 @@ Player.prototype.draw = function() {
     if(this.stamina < this.maxStamina) {
         this.stamina+=this.staminaRegen;
     }
+    var atk = "None"
     if(keys[69] && this.atkE !== "None") {
-      var atk = this.atkE;
-      if(this.atkCool <= 0 && this.mana >= projectileStats[atk].cost) {
-          this.mana-= projectileStats[atk].cost;
-          this.atkCool = this.reload;
-          this.atacking = true;
-          projectiles.push(new projectile(player.x, player.y, player.r + random(-0.1, 0.1), atk, "ally"))
-      }
+      atk = this.atkE;
     }
     if(keys[70] && this.atkF !== "None") {
-      var atk = this.atkF;
-      if(this.atkCool <= 0 && this.mana >= projectileStats[atk].cost) {
-          this.mana-= projectileStats[atk].cost;
-          this.atkCool = this.reload;
-          this.atacking = true;
-          projectiles.push(new projectile(player.x, player.y, player.r + random(-0.1, 0.1), atk, "ally"))
-      }
+      atk = this.atkF;
     }
     if(keys[81] && this.atkQ !== "None") {
-      var atk = this.atkQ;
-      if(this.atkCool <= 0 && this.mana >= projectileStats[atk].cost) {
-          this.mana-= projectileStats[atk].cost;
-          this.atkCool = this.reload;
-          this.atacking = true;
-          projectiles.push(new projectile(player.x, player.y, player.r + random(-0.1, 0.1), atk, "ally"))
-      }
+      atk = this.atkQ;
     }
     if(keys[67] && this.atkC !== "None") {
-      var atk = this.atkC;
-      if(this.atkCool <= 0 && atk == "Mana Burst" && this.mana >= 100) {
-        this.mana-=100;
-        console.log("YE")
+      atk = this.atkC;
+    }
+    if(atk != "None") {
+      if(this.atkCool <= 0 && atk == "Mana Burst" && this.mana >= 200) {
+        this.mana-=200;
         for(var j = 0; j < 10; j++) {
           for(var i = -10; i < 10; i++) {
             this.atkCool = 300;
@@ -529,7 +512,7 @@ Player.prototype.draw = function() {
         }
       } else if(this.atkCool <= 0 && this.mana >= projectileStats[atk].cost) {
           this.mana-= projectileStats[atk].cost;
-          this.atkCool = this.reload;
+          this.atkCool = projectileStats[atk].reload;
           this.atacking = true;
           projectiles.push(new projectile(player.x, player.y, player.r + random(-0.1, 0.1), atk, "ally"))
       }
