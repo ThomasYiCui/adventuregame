@@ -237,7 +237,7 @@ function npc(x, y, type, team) {
             this.reload = 25
             this.spd = 2.3;
             this.range = 800;
-            this.atkRange = 50;
+            this.atkRange = 200;
             this.exp = 5300;
             this.weight = 0.98;
             this.knockBack = 9;
@@ -254,7 +254,7 @@ function npc(x, y, type, team) {
             this.reload = 100;
             this.spd = 1.3;
             this.range = 1900;
-            this.atkRange = 80;
+            this.atkRange = 201;
             this.knockBack = 18;
             this.exp = 5075;
             this.weight = 0.99;
