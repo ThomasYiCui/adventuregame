@@ -133,6 +133,7 @@ var projectileStats = {
         cost: 20,
         knockback: 2,
         effect: [],
+        reload: 100,
     },
     "minigun": {
         size: 5,
@@ -143,6 +144,7 @@ var projectileStats = {
         cost: 5,
         knockback: 1,
         effect: [],
+        reload: 20,
     },
     "minigun2": {
         size: 7.5,
@@ -153,6 +155,7 @@ var projectileStats = {
         cost: 20,
         knockback: 1.5,
         effect: [],
+        reload: 12,
     },
     "minigun3": {
         size: 9,
@@ -163,6 +166,7 @@ var projectileStats = {
         cost: 150,
         knockback: 2,
         effect: [["fire", 45, 0.25]],
+        reload: 7,
     },
     "minigun4": {
         size: 12,
@@ -173,6 +177,7 @@ var projectileStats = {
         cost: 520,
         knockback: 2.5,
         effect: [["fire", 90, 10]],
+        reload: 5,
     },
     "boltOrb 2": {
         size: 15,
@@ -183,6 +188,7 @@ var projectileStats = {
         cost: 5,
         knockback: 4,
         effect: [],
+        reload: 40,
     },
     "snowball": {
         size: 10,
@@ -193,6 +199,7 @@ var projectileStats = {
         cost: 0,
         knockback: 10,
         effect: [],
+        reload: 75,
     },
     "snowball2": {
         size: 20,
@@ -203,6 +210,7 @@ var projectileStats = {
         cost: 0,
         knockback: 15,
         effect: [],
+        reload: 50,
     },
     "decayParticle": {
         size: 5,
@@ -213,6 +221,7 @@ var projectileStats = {
         cost: 0,
         knockback: 0,
         effect: [],
+        reload: 1,
     },
     "fireParticle1": {
         size: 5,
@@ -223,6 +232,7 @@ var projectileStats = {
         cost: 0,
         knockback: 0.5,
         effect: [["fire", 20, 1]],
+        reload: 1,
     },
     "fireParticle2": {
         size: 10,
@@ -233,6 +243,7 @@ var projectileStats = {
         cost: 0,
         knockback: 1,
         effect: [["fire", 50, 0.25]],
+        reload: 1,
     },
     "fireParticle3": {
         size: 15,
@@ -243,6 +254,7 @@ var projectileStats = {
         cost: 0,
         knockback: 1.5,
         effect: [["fire", 100, 0.1]],
+        reload: 1,
     },
     "fireBall 1": {
         size: 25,
@@ -253,6 +265,7 @@ var projectileStats = {
         cost: 40,
         knockback: 4,
         effect: [["fire", 1000, 0.05]],
+        reload: 5,
     },
     "elf arrow": {
         size: 15,
@@ -263,6 +276,7 @@ var projectileStats = {
         cost: 0,
         knockback: 7,
         effect: [],
+        reload: 25,
     },
     "arrow": {
         size: 5,
@@ -273,16 +287,40 @@ var projectileStats = {
         cost: 0,
         knockback: 3,
         effect: [],
+        reload: 50,
     },
     "lightning": {
-        size: 200,
-        dmg: 10000,
+        size: 250,
+        dmg: 1,
         range: 1,
         decayRate: 0,
         spd: 0,
         cost: 0,
-        knockback: 30,
-        effect: [["lightning", 1, 10000]],
+        knockback: 0.01,
+        effect: [["lightning", 1, 1]],
+        reload: 0,
+    },
+    "Lightning Ball": {
+        size: 200,
+        dmg: 1,
+        range: 1000,
+        decayRate: 1,
+        spd: 5,
+        cost: 700,
+        knockback: 0.01,
+        effect: [["lightningS", 1, 1]],
+        reload: 500,
+    },
+    "lightningS": {
+        size: 300,
+        dmg: 1,
+        range: 1,
+        decayRate: 1,
+        spd: 0,
+        cost: 0,
+        knockback: 0.01,
+        effect: [["lightning", 1, 1]],
+        reload: 0,
     },
     "Mana Burst": {
         size: 10,
@@ -292,6 +330,7 @@ var projectileStats = {
         spd: 5,
         cost: 0,
         knockback: 30,
-        effect: [["lightning", 1, 10000]],
+        effect: [["lightning", 1, 1]],
+        reload: 300,
     },
 }
