@@ -130,7 +130,7 @@ function npc(x, y, type, team) {
             this.blockChance = 3;
         break;
         case "Rock Giant Lv. 1":
-            this.hp = 150000;
+            this.hp = 7500;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 30000;
@@ -147,7 +147,7 @@ function npc(x, y, type, team) {
             this.blockChance = 50;
         break;
         case "Rock Person Lv. 1":
-            this.hp = 50000;
+            this.hp = 25000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 4800;
@@ -164,7 +164,7 @@ function npc(x, y, type, team) {
             this.blockChance = 25;
         break;
         case "ghost":
-            this.hp = 68000;
+            this.hp = 28000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 1480;
@@ -213,7 +213,7 @@ function npc(x, y, type, team) {
             
         break;
         case "Dungeon Goblin":
-            this.hp = 3200;
+            this.hp = 6400;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 464;
@@ -246,7 +246,7 @@ function npc(x, y, type, team) {
             this.blockChance = 70;
         break;
         case "Dungeon Yeti Boss":
-            this.hp = 50000;
+            this.hp = 800000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 10000;
@@ -262,7 +262,7 @@ function npc(x, y, type, team) {
             this.blockChance = 50;
         break;
         case "Dungeon Yeti":
-            this.hp = 2500;
+            this.hp = 10000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 4600;
@@ -278,7 +278,7 @@ function npc(x, y, type, team) {
             this.blockChance = 50;
         break;
         case "Dungeon Snowman":
-            this.hp = 1400;
+            this.hp = 4800;
             this.maxHp = this.hp;
             this.dmgWay = "shoot";
             this.dmg = "snowball2";
@@ -294,7 +294,7 @@ function npc(x, y, type, team) {
             this.blockChance = 10;
         break;
         case "GoblinBoss":
-            this.hp = 96000;
+            this.hp = 36000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 100;
@@ -310,7 +310,7 @@ function npc(x, y, type, team) {
             this.blockChance = 30;
         break;
         case "Orc":
-            this.hp = 5000;
+            this.hp = 2500;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 600;
@@ -342,7 +342,7 @@ function npc(x, y, type, team) {
             this.blockChance = 40;
         break;
         case "Yeti":
-            this.hp = 25000;
+            this.hp = 15000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 3000;
@@ -358,7 +358,7 @@ function npc(x, y, type, team) {
             this.blockChance = 5;
         break;
         case "Snowman":
-            this.hp = 12000;
+            this.hp = 6000;
             this.maxHp = this.hp;
             this.dmgWay = "shoot";
             this.dmg = "snowball";
@@ -428,10 +428,10 @@ function npc(x, y, type, team) {
             this.rocksT = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
         break;
         case "Molten Boss":
-            this.hp = 10000000;
+            this.hp = 20000000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 800000;
+            this.dmg = 1600000;
             this.size = 60;
             this.reload = 200;
             this.spd = 4;
@@ -910,7 +910,7 @@ npc.prototype.update = function() {
             if(this.effects[i][1] <= 0) {
                 this.effects.splice(i, 1);
             }
-        } else if(this.effects[i][0] == "lightning") {
+        } else if(this.effects[i][0] == "lightningS") {
             this.hp-=this.effects[i][2];
             this.effects[i][1]-=1;
             projectiles.push(new projectile(this.x, this.y, 0, "lightning", "ally"))
