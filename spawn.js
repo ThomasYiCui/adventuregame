@@ -4,18 +4,14 @@ function spawn() {
     if(slimes < 20) {
         npcs.push(new npc(random(-2000, -400), random(-750, 750), "Slime Lv. 1", "enemy"));
     }
-    if(Goblins < 30 && player.upgrades >= 10) {
-        if(random(0, 100) < 90) {
-            npcs.push(new npc(random(-5300, -4400), random(-500, 500), "Goblin", "enemy"));
-        } else {
-            npcs.push(new npc(random(-5300, -4400), random(-500, 500), "Goblin", "nuetral"));
-        }
+    if(Goblins < 30) {
+        npcs.push(new npc(random(-5300, -4400), random(-500, 500), "Goblin", "enemy"));
         //npcs.push(new npc(random(-4000, -4000), random(-100, 100), "Goblin", "enemy"));
     }
-    if(ghosts < 10 && player.upgrades >= 20) {
+    if(ghosts < 10) {
         npcs.push(new npc(random(3000, 9600), random(-1500, 1500), "ghost", "enemy"));
     }
-    if(rockPeople < 3 && player.upgrades >= 25) {
+    if(rockPeople < 3) {
         npcs.push(new npc(random(-15500, -9600), random(-1500, 1500), "Rock Person Lv. 1", "enemy"));
     }
     if(orcs < 10) {
