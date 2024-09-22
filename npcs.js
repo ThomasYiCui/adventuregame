@@ -41,7 +41,7 @@ function npc(x, y, type, team) {
             this.weight = 0.95;
             this.jumpCool = 100;
             this.knockBack = 3;
-            this.gems = 19;
+            this.gems = 22;
             this.blockChance = 0;
         break;
         case "Slime Lv. 2":
@@ -58,7 +58,7 @@ function npc(x, y, type, team) {
             this.weight = 0.94;
             this.jumpCool = 80;
             this.knockBack = 6;
-            this.gems = 25;
+            this.gems = 50;
             this.blockChance = 1;
         break;
         case "Slime Lv. 3":
@@ -75,7 +75,7 @@ function npc(x, y, type, team) {
             this.weight = 0.94;
             this.jumpCool = 80;
             this.knockBack = 6;
-            this.gems = 25;
+            this.gems = 125;
             this.blockChance = 2;
         break;
         case "Slime Lv. 4":
@@ -92,7 +92,7 @@ function npc(x, y, type, team) {
             this.weight = 0.94;
             this.jumpCool = 80;
             this.knockBack = 6;
-            this.gems = 25;
+            this.gems = 600;
             this.blockChance = 2;
         break;
         case "Slime Lv. 5":
@@ -109,7 +109,7 @@ function npc(x, y, type, team) {
             this.weight = 0.94;
             this.jumpCool = 80;
             this.knockBack = 6;
-            this.gems = 25;
+            this.gems = 2500;
             this.blockChance = 2;
         break;
         case "KingSlime Lv. 1":
@@ -126,14 +126,14 @@ function npc(x, y, type, team) {
             this.weight = 0.93;
             this.jumpCool = 80;
             this.knockBack = 12;
-            this.gems = 269;
+            this.gems = 1069;
             this.blockChance = 3;
         break;
         case "Rock Giant Lv. 1":
             this.hp = 7500;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 30000;
+            this.dmg = 3000;
             this.size = 60;
             this.reload = 320;
             this.spd = 4;
@@ -143,14 +143,14 @@ function npc(x, y, type, team) {
             this.weight = 0.98;
             this.jumpCool = 80;
             this.knockBack = 20;
-            this.gems = 1213;
+            this.gems = 2213;
             this.blockChance = 50;
         break;
         case "Rock Person Lv. 1":
             this.hp = 25000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 4800;
+            this.dmg = 800;
             this.size = 30;
             this.reload = 80;
             this.spd = 2;
@@ -160,7 +160,7 @@ function npc(x, y, type, team) {
             this.weight = 0.98;
             this.jumpCool = 80;
             this.knockBack = 10;
-            this.gems = 152;
+            this.gems = 962;
             this.blockChance = 25;
         break;
         case "ghost":
@@ -176,7 +176,7 @@ function npc(x, y, type, team) {
             this.exp = 312;
             this.weight = 0.99;
             this.knockBack = 6;
-            this.gems = 1028;
+            this.gems = 2028;
             this.blockChance = 10;
         break;
         case "Goblin":
@@ -196,19 +196,19 @@ function npc(x, y, type, team) {
             this.gems = 1;
             **/
             
-            this.hp = 300;
+            this.hp = 600;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 240;
             this.size = 20;
             this.reload = 30
-            this.spd = 1.9;
+            this.spd = 2.2;
             this.range = 3200;
             this.atkRange = 70;
-            this.exp = 123;
+            this.exp = 1053;
             this.weight = 0.99;
             this.knockBack = 6;
-            this.gems = 215;
+            this.gems = 515;
             this.blockChance = 15;
             
         break;
@@ -222,10 +222,10 @@ function npc(x, y, type, team) {
             this.spd = 1.5;
             this.range = 800;
             this.atkRange = 50;
-            this.exp = 3560;
+            this.exp = 7060;
             this.weight = 0.98;
             this.knockBack = 9;
-            this.gems = 56;
+            this.gems = 2006;
             this.blockChance = 20;
         break;
         case "Dungeon Goblin Boss":
@@ -238,10 +238,10 @@ function npc(x, y, type, team) {
             this.spd = 2.3;
             this.range = 800;
             this.atkRange = 200;
-            this.exp = 5300;
+            this.exp = 10300;
             this.weight = 0.98;
             this.knockBack = 9;
-            this.gems = 3323;
+            this.gems = 10323;
             this.daggerR = 100;
             this.blockChance = 70;
         break;
@@ -256,9 +256,9 @@ function npc(x, y, type, team) {
             this.range = 1900;
             this.atkRange = 201;
             this.knockBack = 18;
-            this.exp = 5075;
+            this.exp = 10075;
             this.weight = 0.99;
-            this.gems = 26120;
+            this.gems = 36120;
             this.blockChance = 50;
         break;
         case "Dungeon Yeti":
@@ -272,9 +272,9 @@ function npc(x, y, type, team) {
             this.range = 1900;
             this.atkRange = 70;
             this.knockBack = 9;
-            this.exp = 2575;
+            this.exp = 20575;
             this.weight = 0.99;
-            this.gems = 26120;
+            this.gems = 16120;
             this.blockChance = 50;
         break;
         case "Dungeon Snowman":
@@ -288,9 +288,9 @@ function npc(x, y, type, team) {
             this.range = 1900;
             this.atkRange = 60;
             this.knockBack = 9;
-            this.exp = 1675;
+            this.exp = 20675;
             this.weight = 0.99;
-            this.gems = 41210;
+            this.gems = 21210;
             this.blockChance = 10;
         break;
         case "GoblinBoss":
@@ -303,10 +303,10 @@ function npc(x, y, type, team) {
             this.spd = 3.2;
             this.range = 700;
             this.atkRange = 90;
-            this.exp = 310;
+            this.exp = 40010;
             this.knockBack = 15;
             this.weight = 0.99;
-            this.gems = 9342;
+            this.gems = 19342;
             this.blockChance = 30;
         break;
         case "Orc":
@@ -319,10 +319,10 @@ function npc(x, y, type, team) {
             this.spd = 3;
             this.range = 500;
             this.atkRange = 70;
-            this.exp = 2910;
+            this.exp = 20910;
             this.weight = 0.99;
             this.knockBack = 9;
-            this.gems = 830;
+            this.gems = 1830;
             this.blockChance = 30;
         break;
         case "Soldier":
@@ -352,9 +352,9 @@ function npc(x, y, type, team) {
             this.range = 1900;
             this.atkRange = 70;
             this.knockBack = 9;
-            this.exp = 775;
+            this.exp = 3075;
             this.weight = 0.99;
-            this.gems = 2612;
+            this.gems = 3612;
             this.blockChance = 5;
         break;
         case "Snowman":
@@ -368,9 +368,9 @@ function npc(x, y, type, team) {
             this.range = 1900;
             this.atkRange = 150;
             this.knockBack = 9;
-            this.exp = 575;
+            this.exp = 1575;
             this.weight = 0.99;
-            this.gems = 2000;
+            this.gems = 3000;
             this.blockChance = 1;
             this.accruacy = 0.1;
         break;
@@ -385,9 +385,9 @@ function npc(x, y, type, team) {
             this.range = 1800;
             this.atkRange = 150;
             this.knockBack = 9;
-            this.exp = 1632;
+            this.exp = 10632;
             this.weight = 0.9;
-            this.gems = 812;
+            this.gems = 32012;
             this.blockChance = 1;
             this.accruacy = 0.01;
         break;
@@ -402,9 +402,9 @@ function npc(x, y, type, team) {
             this.range = 1800;
             this.atkRange = 200;
             this.knockBack = 13;
-            this.exp = 1561;
+            this.exp = 10561;
             this.weight = 0.9;
-            this.gems = 925;
+            this.gems = 32925;
             this.blockChance = 1;
             this.accruacy = 0.01;
         break;
@@ -419,9 +419,9 @@ function npc(x, y, type, team) {
             this.range = 1800;
             this.atkRange = 100;
             this.knockBack = 5;
-            this.exp = 25452;
+            this.exp = 50452;
             this.weight = 0.97;
-            this.gems = 2012;
+            this.gems = 160012;
             this.blockChance = 90;
             this.accruacy = 0.01;
             this.rocks = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
@@ -440,7 +440,7 @@ function npc(x, y, type, team) {
             this.knockBack = 10;
             this.exp = 254520;
             this.weight = 0.97;
-            this.gems = 20120;
+            this.gems = 500120;
             this.blockChance = 90;
             this.accruacy = 0.01;
             this.rocks = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
