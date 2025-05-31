@@ -1,5 +1,4 @@
 
-
 // pop up function
 function popUp(txt, x, y, size, lifetime) {
     this.txt = txt;
@@ -39,6 +38,24 @@ function button(x, y, w, h, col, d, txt) {
     textAlign("center")
     text(txt[0], x + w/2, y + h/2 + txt[1]/2 - 3, txt[1]);
 };
+
+function spellButton(x, y, inv, name, cost) {
+  if(player.spellInventory[inv] == "None") {
+      button((canvas.width/2 * x) + 20, 150 + (70 * y), canvas.width/2 - 35, 50, [102, 51, 0], function() {
+          if(gems >= cost) {
+              changeGems(-cost)
+              popUps.push(new popUp("Skill Learned", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
+              player.spellInventory[inv] = name;
+              buy.play();
+          }
+      }, [name + " [" + cost + " Gems]", 20]);
+    } else {
+      button((canvas.width/2 * x) + 20, 150 + (70 * y), canvas.width/2 - 35, 50, [102, 51, 0], function() {
+        popUps.push(new popUp("Skill Already Learned", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
+        player.spellInventory[inv] = name;
+      }, [name + " [LEARNED]", 20]);
+    }
+}
 // collision function
 function collideRect(x, y, w, h, t, alive) {
     if(t.x + t.size > x && t.x - t.size < x + w && t.y + t.size > y && t.y - t.size < y + h) {
@@ -389,93 +406,6 @@ function draw() {
                 player.hp = player.maxHp;
             }
             spawn();
-            if(player.upgradeOn < player.upgrades) {
-                fill(0, 0, 0, 0.5);
-                rect(0, 0, canvas.width, canvas.height);
-                fill(0, 0, 0);
-                textAlign("center");
-                text("Choose an upgrade", canvas.width/2, 50, 50);
-                if(player.upgradeOn !== 5) {
-                    if(player.upgradeOn % 2 == 0) {
-                        button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
-                            player.manaRegen+=0.005;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Mana Regen", 20]);
-                        button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                            player.maxMana+=50;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Max Mana", 20]);
-                        button(canvas.width/2 + 10, 210, 190, 50, [50, 50, 50], function() {
-                            player.maxHp = parseInt(player.maxHp);
-                            player.maxHp+=50;
-                            player.hp = player.maxHp
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Max Hp", 20]);
-                        button(canvas.width/2 - 200, 210, 190, 50, [50, 50, 50], function() {
-                            player.hpRegen+=0.005;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Hp Regen", 20]);
-                    } else {
-                        button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
-                            player.strength+=5;
-                            player.upgradeOn+=1;
-                            clicked = false;
-                        }, ["Strength", 20]);
-                        if(player.spd < 8) {
-                            button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                                player.spd+=0.2;
-                                player.upgradeOn+=1;
-                                buy.play();
-                                clicked = false;
-                            }, ["Speed", 20]);
-                        } else {
-                            button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                                buy.play();
-                                clicked = false;
-                            }, ["Speed [MAXED]", 20]);
-                        }
-                        button(canvas.width/2 + 10, 210, 190, 50, [50, 50, 50], function() {
-                            player.maxStamina = parseInt(player.maxStamina);
-                            player.maxStamina+=50;
-                            player.stamina = player.maxStamina;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Max Stamina", 20]);
-                        button(canvas.width/2 - 200, 210, 190, 50, [50, 50, 50], function() {
-                            player.staminaRegen+=0.005;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Hp Regen", 20]);
-                    }
-                } else if(player.upgradeOn % 5 === 0) {
-                    button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
-                        player.maxMana = parseInt(player.maxMana);
-                        player.maxMana+=200;
-                        player.mana = player.maxMana;
-                        player.upgradeOn+=1;
-                        buy.play();
-                        clicked = false;
-                    }, ["A lot of Max Mana", 20]);
-                    button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                        player.maxHp = parseInt(player.maxHp);
-                        player.maxHp+=200;
-                        player.hp = player.maxHp
-                        player.upgradeOn+=1;
-                        buy.play();
-                        clicked = false;
-                    }, ["A lot of Max Hp", 20]);
-                }
-            }
             if(talking) {
                 fill(0, 0, 0);
                 rect(canvas.width/2 - 503, canvas.height/2 - 203, 1006, 406.5);
@@ -717,34 +647,10 @@ function draw() {
                     }
                 }, ["Ring of Slimes Lv. 1 [5000 Gems]", 20]);
             }
-            if(player.spellInventory[5] == "None") {
-              button(20, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                  if(gems >= 1500) {
-                      changeGems(-1500)
-                      popUps.push(new popUp("Skill Learned", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                      player.spellInventory[5] = "Mana Burst";
-                      buy.play();
-                  }
-              }, ["Mana Burst [1500 Gems]", 20]);
-            } else {
-              button(20, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                popUps.push(new popUp("Skill Already Learned", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-              }, ["Mana Burst [LEARNED]", 20]);
-            }
-            if(player.spellInventory[6] == "None") {
-              button(canvas.width/2 + 20, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                  if(gems >= 2500) {
-                      changeGems(-2500)
-                      popUps.push(new popUp("Skill Learned", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                      player.spellInventory[6] = "Lightning Ball";
-                      buy.play();
-                  }
-              }, ["Lightning Ball [2500 Gems]", 20]);
-            } else {
-              button(canvas.width/2 + 20, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                popUps.push(new popUp("Skill Already Learned", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-              }, ["Lighting Ball [LEARNED]", 20]);
-            }
+            spellButton(0, 1, 5, "Mana Burst", 1500)
+            spellButton(1, 1, 6, "Red", 3000000)
+            spellButton(0, 2, 7, "Blue", 500000)
+            spellButton(1, 2, 8, "Purple", 50000000)
             button(20, canvas.height - 60, 100, 50, [102, 51, 0], function() {
                 scene = "adventure"
                 buy.play();
@@ -829,10 +735,10 @@ function draw() {
             }
             if(owns[9] == "0") {
                 button(20 + canvas.width/2, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                    if(gems >= 3000000) {
-                        changeGems(-3000000)
+                    if(gems >= 30000000) {
+                        changeGems(-30000000)
                         popUps.push(new popUp("Purchase Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                        player.weponDamage = 100000;
+                        player.weponDamage = 200;
                         player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255];
                         player.wepon = "Dragon Slayer"
                         player.inventory[0] = "Dragon Slayer"
@@ -843,7 +749,7 @@ function draw() {
             } else {
                 button(20 + canvas.width/2, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
                     popUps.push(new popUp("Switch Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                    player.weponDamage = 100000;
+                    player.weponDamage = 200;
                     player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255];
                     player.wepon = "Dragon Slayer"
                     player.inventory[0] = "Dragon Slayer"
@@ -984,93 +890,6 @@ function draw() {
                     }
                 }
             }
-            if(player.upgradeOn < player.upgrades) {
-                fill(0, 0, 0, 0.5);
-                rect(0, 0, canvas.width, canvas.height);
-                fill(0, 0, 0);
-                textAlign("center");
-                text("Choose an upgrade", canvas.width/2, 50, 50);
-                if(player.upgradeOn !== 5) {
-                    if(player.upgradeOn % 2 == 0) {
-                        button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
-                            player.manaRegen+=0.005;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Mana Regen", 20]);
-                        button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                            player.maxMana+=50;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Max Mana", 20]);
-                        button(canvas.width/2 + 10, 210, 190, 50, [50, 50, 50], function() {
-                            player.maxHp = parseInt(player.maxHp);
-                            player.maxHp+=50;
-                            player.hp = player.maxHp
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Max Hp", 20]);
-                        button(canvas.width/2 - 200, 210, 190, 50, [50, 50, 50], function() {
-                            player.hpRegen+=0.005;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Hp Regen", 20]);
-                    } else {
-                        button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
-                            player.strength+=5;
-                            player.upgradeOn+=1;
-                            clicked = false;
-                        }, ["Strength", 20]);
-                        if(player.spd < 8) {
-                            button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                                player.spd+=0.2;
-                                player.upgradeOn+=1;
-                                buy.play();
-                                clicked = false;
-                            }, ["Speed", 20]);
-                        } else {
-                            button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                                buy.play();
-                                clicked = false;
-                            }, ["Speed [MAXED]", 20]);
-                        }
-                        button(canvas.width/2 + 10, 210, 190, 50, [50, 50, 50], function() {
-                            player.maxStamina = parseInt(player.maxStamina);
-                            player.maxStamina+=50;
-                            player.stamina = player.maxStamina;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Max Stamina", 20]);
-                        button(canvas.width/2 - 200, 210, 190, 50, [50, 50, 50], function() {
-                            player.staminaRegen+=0.005;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Hp Regen", 20]);
-                    }
-                } else if(player.upgradeOn % 5 === 0) {
-                    button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
-                        player.maxMana = parseInt(player.maxMana);
-                        player.maxMana+=200;
-                        player.mana = player.maxMana;
-                        player.upgradeOn+=1;
-                        buy.play();
-                        clicked = false;
-                    }, ["A lot of Max Mana", 20]);
-                    button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                        player.maxHp = parseInt(player.maxHp);
-                        player.maxHp+=200;
-                        player.hp = player.maxHp
-                        player.upgradeOn+=1;
-                        buy.play();
-                        clicked = false;
-                    }, ["A lot of Max Hp", 20]);
-                }
-            }
             if(player.hp <= 0) {
                 player.x = 200;
                 player.y = 0;
@@ -1198,97 +1017,10 @@ function draw() {
                     doungensCleared+=1;
                     quest = "Clear 3 Doungens: " + doungensCleared + "/" + "3"
                     if(doungensCleared >= 3) {
-                        popUps.push(new popUp("Quest Complete [+200000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
-                        changeGems(200000);
+                        popUps.push(new popUp("Quest Complete [+2000000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
+                        changeGems(2000000);
                         quest = "None";
                     }
-                }
-            }
-            if(player.upgradeOn < player.upgrades) {
-                fill(0, 0, 0, 0.5);
-                rect(0, 0, canvas.width, canvas.height);
-                fill(0, 0, 0);
-                textAlign("center");
-                text("Choose an upgrade", canvas.width/2, 50, 50);
-                if(player.upgradeOn !== 5) {
-                    if(player.upgradeOn % 2 == 0) {
-                        button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
-                            player.manaRegen+=0.005;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Mana Regen", 20]);
-                        button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                            player.maxMana+=50;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Max Mana", 20]);
-                        button(canvas.width/2 + 10, 210, 190, 50, [50, 50, 50], function() {
-                            player.maxHp = parseInt(player.maxHp);
-                            player.maxHp+=50;
-                            player.hp = player.maxHp
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Max Hp", 20]);
-                        button(canvas.width/2 - 200, 210, 190, 50, [50, 50, 50], function() {
-                            player.hpRegen+=0.005;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Hp Regen", 20]);
-                    } else {
-                        button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
-                            player.strength+=5;
-                            player.upgradeOn+=1;
-                            clicked = false;
-                        }, ["Strength", 20]);
-                        if(player.spd < 8) {
-                            button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                                player.spd+=0.2;
-                                player.upgradeOn+=1;
-                                buy.play();
-                                clicked = false;
-                            }, ["Speed", 20]);
-                        } else {
-                            button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                                buy.play();
-                                clicked = false;
-                            }, ["Speed [MAXED]", 20]);
-                        }
-                        button(canvas.width/2 + 10, 210, 190, 50, [50, 50, 50], function() {
-                            player.maxStamina = parseInt(player.maxStamina);
-                            player.maxStamina+=50;
-                            player.stamina = player.maxStamina;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Max Stamina", 20]);
-                        button(canvas.width/2 - 200, 210, 190, 50, [50, 50, 50], function() {
-                            player.staminaRegen+=0.005;
-                            player.upgradeOn+=1;
-                            buy.play();
-                            clicked = false;
-                        }, ["Hp Regen", 20]);
-                    }
-                } else if(player.upgradeOn % 5 === 0) {
-                    button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
-                        player.maxMana = parseInt(player.maxMana);
-                        player.maxMana+=200;
-                        player.mana = player.maxMana;
-                        player.upgradeOn+=1;
-                        buy.play();
-                        clicked = false;
-                    }, ["A lot of Max Mana", 20]);
-                    button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
-                        player.maxHp = parseInt(player.maxHp);
-                        player.maxHp+=200;
-                        player.hp = player.maxHp
-                        player.upgradeOn+=1;
-                        buy.play();
-                        clicked = false;
-                    }, ["A lot of Max Hp", 20]);
                 }
             }
             if(player.hp <= 0) {
@@ -1358,6 +1090,93 @@ function draw() {
             scene = "spellbook";
         }, ["Spell Book", 17])
     }
+    if(player.upgradeOn < player.upgrades) {
+      fill(0, 0, 0, 0.5);
+      rect(0, 0, canvas.width, canvas.height);
+      fill(0, 0, 0);
+      textAlign("center");
+      text("Choose an upgrade", canvas.width/2, 50, 50);
+      if(player.upgradeOn % 5 !== 0) {
+          if(player.upgradeOn % 2 == 0) {
+              button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
+                  player.manaRegen+=0.005;
+                  player.upgradeOn+=1;
+                  buy.play();
+                  clicked = false;
+              }, ["Mana Regen", 20]);
+              button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
+                  player.maxMana+=50;
+                  player.upgradeOn+=1;
+                  buy.play();
+                  clicked = false;
+              }, ["Max Mana", 20]);
+              button(canvas.width/2 + 10, 210, 190, 50, [50, 50, 50], function() {
+                  player.maxHp = parseInt(player.maxHp);
+                  player.maxHp+=50;
+                  player.hp = player.maxHp
+                  player.upgradeOn+=1;
+                  buy.play();
+                  clicked = false;
+              }, ["Max Hp", 20]);
+              button(canvas.width/2 - 200, 210, 190, 50, [50, 50, 50], function() {
+                  player.hpRegen+=0.005;
+                  player.upgradeOn+=1;
+                  buy.play();
+                  clicked = false;
+              }, ["Hp Regen", 20]);
+          } else {
+              button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
+                  player.strength+=5;
+                  player.upgradeOn+=1;
+                  clicked = false;
+              }, ["Strength", 20]);
+              if(player.spd < 8) {
+                  button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
+                      player.spd+=0.2;
+                      player.upgradeOn+=1;
+                      buy.play();
+                      clicked = false;
+                  }, ["Speed", 20]);
+              } else {
+                  button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
+                      buy.play();
+                      clicked = false;
+                  }, ["Speed [MAXED]", 20]);
+              }
+              button(canvas.width/2 + 10, 210, 190, 50, [50, 50, 50], function() {
+                  player.maxStamina = parseInt(player.maxStamina);
+                  player.maxStamina+=50;
+                  player.stamina = player.maxStamina;
+                  player.upgradeOn+=1;
+                  buy.play();
+                  clicked = false;
+              }, ["Max Stamina", 20]);
+              button(canvas.width/2 - 200, 210, 190, 50, [50, 50, 50], function() {
+                  player.staminaRegen+=0.005;
+                  player.upgradeOn+=1;
+                  buy.play();
+                  clicked = false;
+              }, ["Hp Regen", 20]);
+          }
+      } else {
+          button(canvas.width/2 - 200, 150, 190, 50, [50, 50, 50], function() {
+              player.maxMana = parseInt(player.maxMana);
+              player.maxMana+=200;
+              player.mana = player.maxMana;
+              player.upgradeOn+=1;
+              buy.play();
+              clicked = false;
+          }, ["A lot of Max Mana", 20]);
+          button(canvas.width/2 + 10, 150, 190, 50, [50, 50, 50], function() {
+              player.maxHp = parseInt(player.maxHp);
+              player.maxHp+=200;
+              player.hp = player.maxHp
+              player.upgradeOn+=1;
+              buy.play();
+              clicked = false;
+          }, ["A lot of Max Hp", 20]);
+      }
+  }
     clicked = false;
     gemCounter = lerp(gemCounter, gems, 0.05);
     fill(10, 5, 7);
