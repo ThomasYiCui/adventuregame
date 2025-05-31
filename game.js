@@ -1040,24 +1040,24 @@ function draw() {
             for(var i = 0; i < 4; i+=1) {
                 for(var j = 0; j < 3; j+=1) {
                     fill(0, 0, 0);
-                    rect(canvas.width/2 + 225 - (i * 220), 355 + j * 100, 210, 70);
+                    rect(canvas.width/2 + 225 - (i * 220), 195 + j * 100, 210, 95);
                     fill(35, 35, 35);
-                    rect(canvas.width/2 + 230 - (i * 220), 360 + j * 100, 200, 60);
+                    rect(canvas.width/2 + 230 - (i * 220), 200 + j * 100, 200, 60);
                     fill(255, 255, 255);
                     ctx.textAlign = "center"
-                    text(player.spellInventory[i + j * 4], canvas.width/2 + 330 - (i * 220), 405 + j * 100, 30);
+                    text(player.spellInventory[i + j * 4], canvas.width/2 + 330 - (i * 220), 245 + j * 100, 30);
 
                     
-                    button(canvas.width/2 + 230 - (i * 220), 415 + j * 100, 50, 30, [35, 35, 35], function() {
+                    button(canvas.width/2 + 230 - (i * 220), 255 + j * 100, 50, 30, [35, 35, 35], function() {
                         player.atkE = player.spellInventory[i + j * 4];
                     }, ["E", 20]);
-                    button(canvas.width/2 + 280 - (i * 220), 415 + j * 100, 50, 30, [35, 35, 35], function() {
+                    button(canvas.width/2 + 280 - (i * 220), 255 + j * 100, 50, 30, [35, 35, 35], function() {
                         player.atkF = player.spellInventory[i + j * 4];
                     }, ["F", 20]);
-                    button(canvas.width/2 + 330 - (i * 220), 415 + j * 100, 50, 30, [35, 35, 35], function() {
+                    button(canvas.width/2 + 330 - (i * 220), 255 + j * 100, 50, 30, [35, 35, 35], function() {
                         player.atkQ = player.spellInventory[i + j * 4];
                     }, ["Q", 20]);
-                    button(canvas.width/2 + 380 - (i * 220), 415 + j * 100, 50, 30, [35, 35, 35], function() {
+                    button(canvas.width/2 + 380 - (i * 220), 255 + j * 100, 50, 30, [35, 35, 35], function() {
                         player.atkC = player.spellInventory[i + j * 4];
                     }, ["C", 20]);
                 }
