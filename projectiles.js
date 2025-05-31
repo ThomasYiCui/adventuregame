@@ -1,3 +1,4 @@
+
 // projectile function
 function projectile(x, y, r, type, team) {
     this.x = x;
@@ -74,14 +75,38 @@ projectile.prototype.draw = function() {
         stroke(0, 0, 0);
         strokeWeight(5);
         line(this.x - cam.x - cos(this.r) * this.size/2, this.y - cam.y - sin(this.r) * this.size/2, this.x - cam.x + cos(this.r) * this.size/2, this.y - cam.y + sin(this.r) * this.size/2);
-    } else if(this.type == "Lightning Ball") {
-        fill(0, 0, 250, 200);
-        ellipse(this.x - cam.x, this.y - cam.y, 30, 30, 0);
+    } else if(this.type == "Blue") {
+        fill(0, 0, 250, 0.7);
+        ellipse(this.x - cam.x, this.y - cam.y, 100 * Math.min(1, (2000 - this.life)/200), 100 * Math.min(1, (2000 - this.life)/200), 0);
+        fill(0, 0, 255, 0.8);
+        ellipse(this.x - cam.x, this.y - cam.y, 70 * Math.min(1, (2000 - this.life)/200), 70 * Math.min(1, (2000 - this.life)/200), 0);
+        fill(0, 0, 255, 0.9);
+        ellipse(this.x - cam.x, this.y - cam.y, 40 * Math.min(1, (2000 - this.life)/200), 40 * Math.min(1, (2000 - this.life)/200), 0);
+    } else if(this.type == "Red") {
+        fill(250, 0, 0, 0.6);
+        ellipse(this.x - cam.x, this.y - cam.y, this.size, this.size, 0);
+        stroke(250, 0, 0, 1)
+        eEllipse(this.x - cam.x, this.y - cam.y, this.size, this.size, 0)
+    } else if(this.type == "Purple") {
+        fill(153, 51, 255, 0.7);
+        ellipse(this.x - cam.x, this.y - cam.y, 150 * Math.min(1, (300 - this.life)/50), 150 * Math.min(1, (300 - this.life)/50), 0);
+        fill(153, 51, 255, 0.8);
+        ellipse(this.x - cam.x, this.y - cam.y, 120 * Math.min(1, (300 - this.life)/50), 120 * Math.min(1, (300 - this.life)/50), 0);
+        fill(153, 51, 255, 0.9);
+        ellipse(this.x - cam.x, this.y - cam.y, 100 * Math.min(1, (300 - this.life)/50), 100 * Math.min(1, (300 - this.life)/50), 0);
     }
 };
 projectile.prototype.update = function() {
     this.x+=cos(this.r) * this.spd;
     this.y+=sin(this.r) * this.spd;
+    if(this.type === "Blue") {
+      this.r+=Math.round(this.life/3500)/(10.8 + ((2001 - this.life)/12))
+    } else if(this.type === "Red") {
+      this.size+=0.5
+      if(this.life <= 100) {
+        this.size+=20;
+      }
+    }
     this.life-=1;
     if(this.team !== "ally" && player.attacking && player.stamina >= 1 && player.selectedInventory === 0) {
         for(var i = 0; i < player.weponCollision.length; i+=1) {
@@ -93,6 +118,11 @@ projectile.prototype.update = function() {
     }
 };
 projectile.prototype.collide = function(t) {
+  if(this.type === "Blue") {
+    if(dist(t.x, t.y, this.x, this.y) < 100 + t.size) {
+      t.hp-=1000
+    }
+  }
     if(dist(t.x, t.y, this.x, this.y) < this.size + t.size && t.team !== this.team) {
         if(random(0, 100) < t.blockChance && !t.player) {
             this.r = random(0, 360);
@@ -109,12 +139,7 @@ projectile.prototype.collide = function(t) {
                         break;
                     }
                 }
-                if(this.effects[i][0] == "lightningS" && player.mana >= 50) {
-                    player.mana-=50;
-                    stroke(50, 100, 255, 200);
-                    strokeWeight(10);
-                    line(t.x - cam.x, t.y - cam.y, this.x - cam.x, this.y - cam.y);
-                } else if(this.effects[i][0] == "lightning" && player.mana >= 50) {
+                if((this.effects[i][0] == "lightningS" || this.effects[i][0] == "lightning") && player.mana >= 50) {
                     player.mana-=50;
                     stroke(50, 100, 255, 200);
                     strokeWeight(10);
