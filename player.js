@@ -453,7 +453,7 @@ Player.prototype.draw = function() {
         text(this.inventory[i], canvas.width - 200, canvas.height - 25 - i * 60, 20)
     }
     if(this.exp > (this.lvl * this.lvl)/(this.lvl * 0.25) * 10) {
-        this.exp = 0;
+        this.exp-=(this.lvl * this.lvl)/(this.lvl * 0.25) * 10;
         this.lvl+=1;
         this.maxHp = parseInt(this.maxHp);
         this.maxHp+=(this.lvl * this.lvl) * 0.2;
@@ -519,5 +519,4 @@ Player.prototype.draw = function() {
     }
     this.atkCool-=1;
     this.hp = constrain(this.hp, -1, this.maxHp)
-
 };
