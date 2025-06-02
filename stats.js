@@ -145,7 +145,7 @@ var projectileStats = {
         knockback: 0,
         effect: [],
         reload: 1,
-    }
+    },
     "minigun": {
         size: 5,
         dmg: 10,
