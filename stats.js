@@ -135,6 +135,17 @@ var projectileStats = {
         effect: [],
         reload: 100,
     },
+    "None": {
+       size: 0,
+        dmg: 0,
+        range: 0,
+        decayRate: 100,
+        spd: 0,
+        cost: 0,
+        knockback: 0,
+        effect: [],
+        reload: 1,
+    }
     "minigun": {
         size: 5,
         dmg: 10,
