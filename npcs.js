@@ -242,7 +242,6 @@ function npc(x, y, type, team) {
             this.weight = 0.98;
             this.knockBack = 9;
             this.gems = 10323;
-            this.daggerR = 100;
             this.blockChance = 70;
         break;
         case "Dungeon Yeti Boss":
@@ -258,7 +257,7 @@ function npc(x, y, type, team) {
             this.knockBack = 18;
             this.exp = 10075;
             this.weight = 0.99;
-            this.gems = 36120;
+            this.gems = 36120;;
             this.blockChance = 50;
         break;
         case "Dungeon Yeti":
@@ -732,9 +731,18 @@ npc.prototype.draw = function() {
         rect(10, 40, canvas.width - 20, 9);
         fill(0, 255, 0)
         rect(10, 40, constrain((this.hp/this.maxHp), 0, 1) * (canvas.width - 20), 9);
+    } else if(this.type == "Dungeon Elf Boss") {
+        fill(0, 0, 0);
+        rect(7, 37, canvas.width - 14, 15);
+        textAlign("center");
+        text("Noah leader of the Elves", canvas.width/2, 25, 30)
+        fill(255, 0, 0);
+        rect(10, 40, canvas.width - 20, 9);
+        fill(0, 255, 0)
+        rect(10, 40, constrain((this.hp/this.maxHp), 0, 1) * (canvas.width - 20), 9);
         if(this.daggerR <= 0) {
             var r = atan2(this.y - player.y, this.x - player.x);
-            projectiles.push(new projectile(this.x, this.y, r - Math.PI - random(0.1, 0.1), "fireBall 1", "enemy"));
+            projectiles.push(new projectile(this.x, this.y, r * (Math.PI/180) - Math.PI - random(0.1, 0.1), "fireBall 1", "enemy"));
             this.daggerR = 100;
         }
         this.daggerR-=1;
@@ -754,6 +762,15 @@ npc.prototype.update = function() {
     this.y+=this.aY;
     this.aX*=this.weight;
     this.aY*=this.weight;
+    if(this.type === "Dungeon Yeti Boss") {
+      if(frameCount % 2880 <= 360 && frameCount % 10 === 0) {
+        console.log(frameCount % 2880)
+          projectiles.push(new projectile(this.x, this.y, frameCount % 2880 * (Math.PI/180), "snowball2", "enemy"));
+      } else if(frameCount % 2880 > 1440 && frameCount % 2880 < 1540) {
+          var r = atan2(this.y - player.y, this.x - player.x);
+          projectiles.push(new projectile(this.x, this.y, r - Math.PI, "snowball", "enemy"));
+      }
+    }
     if(this.team !== "ally" && player.attacking && player.stamina >= 1 && player.selectedInventory === 0) {
         for(var i = 0; i < player.weponCollision.length; i+=1) {
             if(dist(this.x, this.y, player.x + cos(player.r) * player.weponCollision[i], player.y + sin(player.r) * player.weponCollision[i]) < 10 + this.size/2 + player.weponSpd * 5) {
