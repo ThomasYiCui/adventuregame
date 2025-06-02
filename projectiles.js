@@ -119,7 +119,7 @@ projectile.prototype.update = function() {
 };
 projectile.prototype.collide = function(t) {
   if(this.type === "Blue") {
-    if(dist(t.x, t.y, this.x, this.y) < 100 + t.size) {
+    if(dist(t.x, t.y, this.x, this.y) < 100 + t.size && t.team !== this.team) {
       t.hp-=1000
     }
   }
