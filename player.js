@@ -38,7 +38,10 @@ function Player() {
     this.player = true;
     this.stamina = parseInt(localStorage.getItem("stamina")) || 100;
     this.size = 20;
-    this.atkCool = 0;
+    this.atkCoolE = 0;
+    this.atkCoolF = 0;
+    this.atkCoolQ = 0;
+    this.atkCoolC = 0;
     this.atacking = false;
     this.reload = localStorage.getItem("reload") || 100;
     this.r = 0;
@@ -139,30 +142,52 @@ Player.prototype.draw = function() {
     rect(this.x - cam.x - this.size, this.y - cam.y + this.size + 12, this.size * 2, 5);
     fill(0, 255, 0);
     rect(this.x - cam.x - this.size, this.y - cam.y + this.size + 12, constrain((this.hp/this.maxHp), 0, 1) * (this.size * 2), 5)
-    button(15, canvas.height - 170, 55, 55, [100, 100, 100], function() {
+    button(20, canvas.height - 215, 55, 55, [100, 100, 100], function() {
         if(manaPotionT1 > 0) {
             player.mana+=player.maxMana/10;
             manaPotionT1-=1;
             player.mana = constrain(player.mana, -1, player.maxMana)
             itemCoolDown = 100;
         }
-    }, [bandagesT1 + " [M]", 20])
-    button(100, canvas.height - 170, 55, 55, [100, 100, 100], function() {
+    }, [manaPotionT1 + " [M]", 20])
+    button(90, canvas.height - 215, 55, 55, [100, 100, 100], function() {
         if(bandagesT1 > 0) {
             player.hp+=player.maxHp/10;
             bandagesT1-=1;
             player.hp = constrain(player.hp, -1, player.maxHp)
             itemCoolDown = 100;
         }
-    }, [manaPotionT1 + " [B]", 20])
+    }, [bandagesT1 + " [B]", 20])
     fill(0, 0, 0);
     rect(12, canvas.height - 33, 206, 31)
     rect(12, canvas.height - 68, 206, 31);
     rect(12, canvas.height - 103, 206, 31);
+    
+    rect(20, canvas.height - 150, 40, 40)
+    rect(70, canvas.height - 150, 40, 40);
+    rect(120, canvas.height - 150, 40, 40);
+    rect(170, canvas.height - 150, 40, 40);
     fill(100, 100, 100);
     rect(15, canvas.height - 30, 200, 25)
     rect(15, canvas.height - 65, 200, 25);
     rect(15, canvas.height - 100, 200, 25);
+    
+    rect(23, canvas.height - 147, 34, 34)
+    rect(73, canvas.height - 147, 34, 34);
+    rect(123, canvas.height - 147, 34, 34);
+    rect(173, canvas.height - 147, 34, 34);
+    
+    fill(150, 150, 150);
+    rect(23, canvas.height - 113, 34, -34 * (Math.max(0, this.atkCoolE)/projectileStats[this.atkE].reload))
+    rect(73, canvas.height - 113, 34, -34 * (Math.max(0, this.atkCoolF)/projectileStats[this.atkF].reload));
+    rect(123, canvas.height - 113, 34, -34 * (Math.max(0, this.atkCoolQ)/projectileStats[this.atkQ].reload));
+    rect(173, canvas.height - 113, 34, -34 * (Math.max(0, this.atkCoolC)/projectileStats[this.atkC].reload));
+    
+    fill(0, 0, 0)
+    text("E", 40, canvas.height - 123, 20);
+    text("F", 90, canvas.height - 123, 20);
+    text("Q", 140, canvas.height - 123, 20);
+    text("C", 190, canvas.height - 123, 20);
     fill(0, 0, 200);
     rect(15, canvas.height - 30, (this.mana/this.maxMana) * 200, 25);
     fill(200, 150, 30);
@@ -488,35 +513,43 @@ Player.prototype.draw = function() {
         this.stamina+=this.staminaRegen;
     }
     var atk = "None"
+    var use = 0;
     if(keys[69] && this.atkE !== "None") {
       atk = this.atkE;
+      use = "atkCoolE"
     }
     if(keys[70] && this.atkF !== "None") {
       atk = this.atkF;
+      use = "atkCoolF"
     }
     if(keys[81] && this.atkQ !== "None") {
       atk = this.atkQ;
+      use = "atkCoolQ"
     }
     if(keys[67] && this.atkC !== "None") {
       atk = this.atkC;
+      use = "atkCoolC"
     }
     if(atk != "None") {
-      if(this.atkCool <= 0 && atk == "Mana Burst" && this.mana >= 200) {
+      if(this[use] <= 0 && atk == "Mana Burst" && this.mana >= 200) {
         this.mana-=200;
-        for(var j = 0; j < 10; j++) {
+        this[use] = 300;
+        this.atacking = true;
+        for(var j = 0; j < 3; j++) {
           for(var i = -10; i < 10; i++) {
-            this.atkCool = 300;
-            this.atacking = true;
-            projectiles.push(new projectile(player.x, player.y, player.r + (i * 0.1), "minigun2", "ally"))
+            projectiles.push(new projectile(player.x, player.y, player.r + (i * 0.1), "minigun", "ally"))
           }
         }
-      } else if(this.atkCool <= 0 && this.mana >= projectileStats[atk].cost) {
+      } else if(this[use] <= 0 && this.mana >= projectileStats[atk].cost) {
           this.mana-= projectileStats[atk].cost;
-          this.atkCool = projectileStats[atk].reload;
+          this[use] = projectileStats[atk].reload;
           this.atacking = true;
           projectiles.push(new projectile(player.x, player.y, player.r + random(-0.1, 0.1), atk, "ally"))
       }
     }
-    this.atkCool-=1;
+    this.atkCoolC-=1;
+    this.atkCoolQ-=1;
+    this.atkCoolF-=1;
+    this.atkCoolE-=1;
     this.hp = constrain(this.hp, -1, this.maxHp)
 };
