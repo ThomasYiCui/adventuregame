@@ -633,8 +633,8 @@ function draw() {
                     if(gems >= 10000) {
                         changeGems(-10000)
                         popUps.push(new popUp("Purchase Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                        player.weponDamage = 10;
-                        player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180];
+                        player.weponDamage = 7;
+                        player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135];
                         player.wepon = "Penatrator"
                         player.inventory[0] = "Penatrator"
                         buy.play();
@@ -644,8 +644,8 @@ function draw() {
             } else {
                 button(20 + canvas.width/2, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
                     popUps.push(new popUp("Switch Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                    player.weponDamage = 10;
-                    player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180];
+                    player.weponDamage = 7;
+                    player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135];
                     player.wepon = "Penatrator"
                     player.inventory[0] = "Penatrator"
                     buy.play();
@@ -656,8 +656,8 @@ function draw() {
                     if(gems >= 100000) {
                         changeGems(-100000)
                         popUps.push(new popUp("Purchase Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                        player.weponDamage = 25;
-                        player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225];
+                        player.weponDamage = 15;
+                        player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180];
                         player.wepon = "Dagmor"
                         player.inventory[0] = "Dagmor"
                         buy.play();
@@ -667,8 +667,8 @@ function draw() {
             } else {
                 button(20, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
                     popUps.push(new popUp("Switch Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                    player.weponDamage = 25;
-                    player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225];
+                    player.weponDamage = 15;
+                    player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180];
                     player.wepon = "Dagmor"
                     player.inventory[0] = "Dagmor"
                     buy.play();
@@ -676,22 +676,22 @@ function draw() {
             }
             if(owns[9] == "0") {
                 button(20 + canvas.width/2, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                    if(gems >= 30000000) {
-                        changeGems(-30000000)
+                    if(gems >= 15000000) {
+                        changeGems(-15000000)
                         popUps.push(new popUp("Purchase Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                        player.weponDamage = 75;
-                        player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255];
+                        player.weponDamage = 50;
+                        player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210];
                         player.wepon = "Dragon Slayer"
                         player.inventory[0] = "Dragon Slayer"
                         buy.play();
                         owns[9] = "1";
                     }
-                }, ["Dragon Slayer [30000000 Gems]", 20]);
+                }, ["Dragon Slayer [15000000 Gems]", 20]);
             } else {
                 button(20 + canvas.width/2, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
                     popUps.push(new popUp("Switch Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                    player.weponDamage = 75;
-                    player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255];
+                    player.weponDamage = 50;
+                    player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210];
                     player.wepon = "Dragon Slayer"
                     player.inventory[0] = "Dragon Slayer"
                     buy.play();
