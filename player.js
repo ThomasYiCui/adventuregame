@@ -256,15 +256,29 @@ Player.prototype.draw = function() {
         strokeWeight(20);
         line(player.x + cos(player.r) * 60 - cam.x, player.y + sin(player.r) * 60 - cam.y, player.x + cos(player.r) * 190 - cam.x, player.y + sin(player.r) * 190 - cam.y);
         fill(10, 10, 10)
-        triangle(player.x + cos(player.r) * 245 - cam.x, player.y + sin(player.r) * 200 - cam.y,
-                player.x + cos(player.r) * 224 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 189 - cam.y + sin(player.r + 1.5) * 10,
-                player.x + cos(player.r) * 224 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 189 - cam.y + sin(player.r - 1.5) * 10);
+        triangle(player.x + cos(player.r) * 215 - cam.x, player.y + sin(player.r) * 215 - cam.y,
+                player.x + cos(player.r) * 189 - cam.x + cos(player.r + 1.5) * 12, player.y + sin(player.r) * 189 - cam.y + sin(player.r + 1.5) * 12,
+                player.x + cos(player.r) * 189 - cam.x + cos(player.r - 1.5) * 12, player.y + sin(player.r) * 189 - cam.y + sin(player.r - 1.5) * 12);
+        fill(150, 0, 0)
+        triangle(player.x + cos(player.r) * 206 - cam.x, player.y + sin(player.r) * 206 - cam.y,
+                player.x + cos(player.r) * 189 - cam.x + cos(player.r + 1.5) * 8, player.y + sin(player.r) * 189 - cam.y + sin(player.r + 1.5) * 8,
+                player.x + cos(player.r) * 189 - cam.x + cos(player.r - 1.5) * 8, player.y + sin(player.r) * 189 - cam.y + sin(player.r - 1.5) * 8);
+        strokeWeight(10);
+        stroke(150, 0, 0)
+        line(player.x + cos(player.r) * 65 - cam.x, player.y + sin(player.r) * 65 - cam.y, player.x + cos(player.r) * 190 - cam.x, player.y + sin(player.r) * 190 - cam.y);
+        fill(100, 0, 0)
+        triangle(player.x + cos(player.r) * 200 - cam.x, player.y + sin(player.r) * 200 - cam.y,
+                player.x + cos(player.r) * 189 - cam.x + cos(player.r + 1.5) * 5, player.y + sin(player.r) * 189 - cam.y + sin(player.r + 1.5) * 5,
+                player.x + cos(player.r) * 189 - cam.x + cos(player.r - 1.5) * 5, player.y + sin(player.r) * 189 - cam.y + sin(player.r - 1.5) * 5);
+        strokeWeight(5);
+        stroke(100, 0, 0)
+        line(player.x + cos(player.r) * 70 - cam.x, player.y + sin(player.r) * 70 - cam.y, player.x + cos(player.r) * 190 - cam.x, player.y + sin(player.r) * 190 - cam.y);
         fill(255, 200, 155);
         ellipse(player.x + cos(player.r) * 45 - cam.x, player.y + sin(player.r) * 45 - cam.y, 10, 10, 0)
     } else if(this.inventory[this.selectedInventory] === "Dagmor") {
         strokeWeight(10);
         if(this.attacking) {
-            stroke(88, 53.6, 26.4);
+            stroke(200, 175, 0);
         } else {
             stroke(101, 67, 33, 0.5);
         }
@@ -279,9 +293,13 @@ Player.prototype.draw = function() {
         strokeWeight(20);
         line(player.x + cos(player.r) * 60 - cam.x, player.y + sin(player.r) * 60 - cam.y, player.x + cos(player.r) * 155 - cam.x, player.y + sin(player.r) * 155 - cam.y);
         fill(30, 30, 30)
-        triangle(player.x + cos(player.r) * 215 - cam.x, player.y + sin(player.r) * 175 - cam.y,
-                player.x + cos(player.r) * 194 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 154 - cam.y + sin(player.r + 1.5) * 10,
-                player.x + cos(player.r) * 194 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 154 - cam.y + sin(player.r - 1.5) * 10);
+        triangle(player.x + cos(player.r) * 175 - cam.x, player.y + sin(player.r) * 175 - cam.y,
+                player.x + cos(player.r) * 154 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 154 - cam.y + sin(player.r + 1.5) * 10,
+                player.x + cos(player.r) * 154 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 154 - cam.y + sin(player.r - 1.5) * 10);
+        fill(255, 215, 0)
+        triangle(player.x + cos(player.r) * 70 - cam.x, player.y + sin(player.r) * 70 - cam.y,
+                player.x + cos(player.r) * 59 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 59 - cam.y + sin(player.r + 1.5) * 10,
+                player.x + cos(player.r) * 59 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 59 - cam.y + sin(player.r - 1.5) * 10);
         fill(255, 200, 155);
         ellipse(player.x + cos(player.r) * 45 - cam.x, player.y + sin(player.r) * 45 - cam.y, 10, 10, 0)
     } else if(this.inventory[this.selectedInventory] === "Penatrator") {
@@ -302,11 +320,17 @@ Player.prototype.draw = function() {
         strokeWeight(20);
         line(player.x + cos(player.r) * 60 - cam.x, player.y + sin(player.r) * 60 - cam.y, player.x + cos(player.r) * 140 - cam.x, player.y + sin(player.r) * 140 - cam.y);
         fill(150, 150, 150)
-        triangle(player.x + cos(player.r) * 195 - cam.x, player.y + sin(player.r) * 160 - cam.y,
-                player.x + cos(player.r) * 179 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 139 - cam.y + sin(player.r + 1.5) * 10,
-                player.x + cos(player.r) * 179 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 139 - cam.y + sin(player.r - 1.5) * 10);
+        triangle(player.x + cos(player.r) * 160 - cam.x, player.y + sin(player.r) * 160 - cam.y,
+                player.x + cos(player.r) * 139 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 139 - cam.y + sin(player.r + 1.5) * 10,
+                player.x + cos(player.r) * 139 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 139 - cam.y + sin(player.r - 1.5) * 10);
         fill(255, 200, 155);
         ellipse(player.x + cos(player.r) * 45 - cam.x, player.y + sin(player.r) * 45 - cam.y, 10, 10, 0)
+        stroke(88, 53.6, 26.4);
+        strokeWeight(8)
+        line(player.x + cos(player.r) * 60 - cam.x + cos(player.r + Math.PI/2) * 20, 
+        player.y + sin(player.r) * 60 - cam.y + sin(player.r + Math.PI/2) * 20, 
+        player.x + cos(player.r) * 60 - cam.x - cos(player.r + Math.PI/2) * 20, 
+          player.y + sin(player.r) * 60 - cam.y - sin(player.r + Math.PI/2) * 20);
     } else if(this.inventory[this.selectedInventory] === "Ring of Slimes Lv. 1") {
         stroke(0, 0, 200);
         strokeWeight(3);
