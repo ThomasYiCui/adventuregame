@@ -288,11 +288,11 @@ function draw() {
                         if(slimesKilled >= 6) {
                             quest = "None";
                             slimesKilled = 0;
-                            changeGems(300)
-                            player.hp+=10;
+                            changeGems(1000)
+                            player.hp+=100;
                             popUps.push(new popUp("Quest Complete", canvas.width/2 - random(-10, 10), canvas.height/4 + random(-20, 20), 
  50, 300))
-                            popUps.push(new popUp("+300 Gems", canvas.width/2 - random(-10, 10), canvas.height/4 + random(70, 90), 
+                            popUps.push(new popUp("+1000 Gems", canvas.width/2 - random(-10, 10), canvas.height/4 + random(70, 90), 
  20, 300))
                         }
                     } else if(quest[5] === "1" && quest[6] === "0" && quest[8] == "G" && quest[9] === "o" && quest[10] === "b" && npcs[i].type === "Goblin") {
@@ -301,11 +301,11 @@ function draw() {
                         if(goblinsKilled >= 10) {
                             quest = "None";
                             goblinsKilled = 0;
-                            changeGems(1000)
-                            player.hp+=30;
+                            changeGems(20000)
+                            player.hp+=300;
                             popUps.push(new popUp("Quest Complete", canvas.width/2 - random(-10, 10), canvas.height/4 + random(-20, 20), 
  50, 300))
-                            popUps.push(new popUp("+1000 Gems", canvas.width/2 - random(-10, 10), canvas.height/4 + random(70, 90), 
+                            popUps.push(new popUp("+20000 Gems", canvas.width/2 - random(-10, 10), canvas.height/4 + random(70, 90), 
  20, 300))
                         }
                     }
@@ -528,22 +528,22 @@ function draw() {
             if(player.inventory[1].substring(0, 14) === "Ring of Slimes") {
                 if(player.inventory[1] === "Ring of Slimes Lv. 1") {
                     button(canvas.width/2 + 20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                        if(gems >= 10000) {
-                            changeGems(-10000)
+                        if(gems >= 5000) {
+                            changeGems(-5000)
                             popUps.push(new popUp("Skill Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
                             player.inventory[1] = "Ring of Slimes Lv. 2";
                             buy.play();
                         }
-                    }, ["Ring of Slimes Lv. 2 [10000 Gems]", 20]);
+                    }, ["Ring of Slimes Lv. 2 [5000 Gems]", 20]);
                 } else if(player.inventory[1] === "Ring of Slimes Lv. 2") {
                     button(canvas.width/2 + 20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                        if(gems >= 15000) {
-                            changeGems(-15000)
+                        if(gems >= 10000) {
+                            changeGems(-10000)
                             popUps.push(new popUp("Skill Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
                             player.inventory[1] = "Ring of Slimes Lv. 3";
                             buy.play();
                         }
-                    }, ["Ring of Slimes Lv. 3 [15000 Gems]", 20]);
+                    }, ["Ring of Slimes Lv. 3 [10000 Gems]", 20]);
                 } else if(player.inventory[1] === "Ring of Slimes Lv. 3") {
                     button(canvas.width/2 + 20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
                         if(gems >= 20000) {
@@ -555,22 +555,22 @@ function draw() {
                     }, ["Ring of Slimes Lv. 4 [20000 Gems]", 20]);
                 } else if(player.inventory[1] === "Ring of Slimes Lv. 4") {
                     button(canvas.width/2 + 20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                        if(gems >= 40000) {
-                            changeGems(-40000)
+                        if(gems >= 200000) {
+                            changeGems(-200000)
                             popUps.push(new popUp("Skill Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
                             player.inventory[1] = "Ring of Slimes Lv. 5";
                             buy.play();
                         }
-                    }, ["Ring of Slimes Lv. 5 [40000 Gems]", 20]);
+                    }, ["Ring of Slimes Lv. 5 [200000 Gems]", 20]);
                 } else if(player.inventory[1] === "Ring of Slimes Lv. 5") {
                     button(canvas.width/2 + 20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                        if(gems >= 40000) {
-                            changeGems(-40000)
+                        if(gems >= 1000000) {
+                            changeGems(-1000000)
                             popUps.push(new popUp("Skill Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
                             player.inventory[1] = "Ring of Slimes Lv. 6";
                             buy.play();
                         }
-                    }, ["Ring of Slimes Lv. 6 [40000 Gems]", 20]);
+                    }, ["Ring of Slimes Lv. 6 [1000000 Gems]", 20]);
                 } else if(player.inventory[1] === "Ring of Slimes Lv. 6") {
                     button(canvas.width/2 + 20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
                         buy.play();
@@ -578,18 +578,18 @@ function draw() {
                 }
             } else {
                 button(canvas.width/2 + 20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                    if(gems >= 5000) {
-                        changeGems(-5000)
+                    if(gems >= 500) {
+                        changeGems(-500)
                         popUps.push(new popUp("Skill Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
                         player.inventory[1] = "Ring of Slimes Lv. 1";
                         buy.play();
                     }
-                }, ["Ring of Slimes Lv. 1 [5000 Gems]", 20]);
+                }, ["Ring of Slimes Lv. 1 [500 Gems]", 20]);
             }
-            spellButton(0, 1, 5, "Mana Burst", 1500)
-            spellButton(1, 1, 6, "Red", 3000000)
-            spellButton(0, 2, 7, "Blue", 500000)
-            spellButton(1, 2, 8, "Purple", 50000000)
+            spellButton(0, 1, 5, "Mana Burst", 500)
+            spellButton(1, 1, 6, "Red", 1500000)
+            spellButton(0, 2, 7, "Blue", 2500000)
+            spellButton(1, 2, 8, "Purple", 5000000)
             button(20, canvas.height - 60, 100, 50, [102, 51, 0], function() {
                 scene = "adventure"
                 buy.play();
@@ -605,17 +605,17 @@ function draw() {
         case "swordShop":
             if(owns[0] == "0") {
                 button(20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                    if(gems >= 2000) {
+                    if(gems >= 500) {
                         popUps.push(new popUp("Purchase Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
                         player.weponDamage = 5;
                         player.weponCollision = [30, 45, 60, 75, 90, 105, 120];
                         player.wepon = "Long Sword"
-                        changeGems(-2000)
+                        changeGems(-500)
                         player.inventory[0] = "Long Sword"
                         buy.play();
                         owns[0] = "1";
                     }
-                }, ["Long Sword [2000 Gems]", 20]);
+                }, ["Long Sword [500 Gems]", 20]);
             } else {
                 button(20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
                     popUps.push(new popUp("Switch Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
@@ -628,8 +628,8 @@ function draw() {
             }
             if(owns[1] == "0") {
                 button(20 + canvas.width/2, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                    if(gems >= 20000) {
-                        changeGems(-20000)
+                    if(gems >= 10000) {
+                        changeGems(-10000)
                         popUps.push(new popUp("Purchase Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
                         player.weponDamage = 10;
                         player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180];
@@ -638,7 +638,7 @@ function draw() {
                         buy.play();
                         owns[1] = "1";
                     }
-                }, ["Penatrator [20000 Gems]", 20]);
+                }, ["Penatrator [10000 Gems]", 20]);
             } else {
                 button(20 + canvas.width/2, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
                     popUps.push(new popUp("Switch Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
@@ -651,10 +651,10 @@ function draw() {
             }
             if(owns[8] == "0") {
                 button(20, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
-                    if(gems >= 150000) {
-                        changeGems(-150000)
+                    if(gems >= 100000) {
+                        changeGems(-100000)
                         popUps.push(new popUp("Purchase Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                        player.weponDamage = 75;
+                        player.weponDamage = 25;
                         player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225];
                         player.wepon = "Dagmor"
                         player.inventory[0] = "Dagmor"
@@ -665,7 +665,7 @@ function draw() {
             } else {
                 button(20, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
                     popUps.push(new popUp("Switch Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                    player.weponDamage = 75;
+                    player.weponDamage = 25;
                     player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225];
                     player.wepon = "Dagmor"
                     player.inventory[0] = "Dagmor"
@@ -677,7 +677,7 @@ function draw() {
                     if(gems >= 30000000) {
                         changeGems(-30000000)
                         popUps.push(new popUp("Purchase Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                        player.weponDamage = 200;
+                        player.weponDamage = 75;
                         player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255];
                         player.wepon = "Dragon Slayer"
                         player.inventory[0] = "Dragon Slayer"
@@ -688,7 +688,7 @@ function draw() {
             } else {
                 button(20 + canvas.width/2, 220, canvas.width/2 - 35, 50, [102, 51, 0], function() {
                     popUps.push(new popUp("Switch Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
-                    player.weponDamage = 200;
+                    player.weponDamage = 75;
                     player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255];
                     player.wepon = "Dragon Slayer"
                     player.inventory[0] = "Dragon Slayer"
