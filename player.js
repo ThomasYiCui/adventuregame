@@ -312,9 +312,9 @@ Player.prototype.draw = function() {
         strokeWeight(3);
         eEllipse(player.x + cos(player.r) * 30 - cam.x, player.y + sin(player.r) * 30 - cam.y, 5, 5, 0);
         if(clicked) {
-            if(this.mana >= 500) {
+            if(this.mana >= 250) {
                 if(allySlimes < 4) {
-                    this.mana-=500;
+                    this.mana-=250;
                     if(scene == "adventure") {
                         for(var i = 0; i < 1; i+=1) {
                             npcs.push(new npc(player.x + random(-100, 100), player.y + random(-100, 100), "Slime Lv. 1", "ally"));
@@ -336,9 +336,9 @@ Player.prototype.draw = function() {
         strokeWeight(3);
         eEllipse(player.x + cos(player.r) * 32.5 - cam.x, player.y + sin(player.r) * 32.5 - cam.y, 7.5, 7.5, 0);
         if(clicked) {
-            if(this.mana >= 2500) {
-                if(allySlimes < 30) {
-                    this.mana-=2500;
+            if(this.mana >= 500) {
+                if(allySlimes < 10) {
+                    this.mana-=500;
                     if(scene == "adventure") {
                         for(var i = 0; i < 3; i+=1) {
                             npcs.push(new npc(player.x + random(-100, 100), player.y + random(-100, 100), "Slime Lv. 2", "ally"));
@@ -360,9 +360,9 @@ Player.prototype.draw = function() {
         strokeWeight(4);
         eEllipse(player.x + cos(player.r) * 32.5 - cam.x, player.y + sin(player.r) * 32.5 - cam.y, 7.5, 7.5, 0);
         if(clicked) {
-            if(this.mana >= 4000) {
-                if(allySlimes < 100) {
-                    this.mana-=4000;
+            if(this.mana >= 1000) {
+                if(allySlimes < 15) {
+                    this.mana-=1000;
                     if(scene == "adventure") {
                         for(var i = 0; i < 3; i+=1) {
                             npcs.push(new npc(player.x + random(-100, 100), player.y + random(-100, 100), "Slime Lv. 2", "ally"));
@@ -392,9 +392,9 @@ Player.prototype.draw = function() {
         strokeWeight(4);
         eEllipse(player.x + cos(player.r) * 32.5 - cam.x, player.y + sin(player.r) * 32.5 - cam.y, 7.5, 7.5, 0);
         if(clicked) {
-            if(this.mana >= 8000) {
-                if(allySlimes < 175) {
-                    this.mana-=8000;
+            if(this.mana >= 4000) {
+                if(allySlimes < 25) {
+                    this.mana-=4000;
                     if(scene == "adventure") {
                         for(var i = 0; i < 12; i+=1) {
                             npcs.push(new npc(player.x + random(-100, 100), player.y + random(-100, 100), "Slime Lv. 3", "ally"));
@@ -422,9 +422,9 @@ Player.prototype.draw = function() {
         strokeWeight(4);
         eEllipse(player.x + cos(player.r) * 32.5 - cam.x, player.y + sin(player.r) * 32.5 - cam.y, 5, 5, 0);
         if(clicked) {
-            if(this.mana >= 16000) {
-                if(allySlimes < 350) {
-                    this.mana-=16000;
+            if(this.mana >= 8000) {
+                if(allySlimes < 50) {
+                    this.mana-=8000;
                     if(scene == "adventure") {
                         for(var i = 0; i < 6; i+=1) {
                             npcs.push(new npc(player.x + random(-100, 100), player.y + random(-100, 100), "Slime Lv. 4", "ally"));
@@ -446,9 +446,9 @@ Player.prototype.draw = function() {
         strokeWeight(7);
         eEllipse(player.x + cos(player.r) * 37.5 - cam.x, player.y + sin(player.r) * 37.5 - cam.y, 15, 15, 0);
         if(clicked) {
-            if(this.mana >= 64000) {
-                if(allySlimes < 5) {
-                    this.mana-=64000;
+            if(this.mana >= 16000) {
+                if(allySlimes < 25) {
+                    this.mana-=16000;
                     if(scene == "adventure") {
                         npcs.push(new npc(player.x + random(-100, 100), player.y + random(-100, 100), "Slime Lv. 5", "ally"));
                     } else {
