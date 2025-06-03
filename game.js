@@ -290,6 +290,7 @@ function draw() {
                             slimesKilled = 0;
                             changeGems(1000)
                             player.hp+=100;
+                            player.exp+=1000;
                             popUps.push(new popUp("Quest Complete", canvas.width/2 - random(-10, 10), canvas.height/4 + random(-20, 20), 
  50, 300))
                             popUps.push(new popUp("+1000 Gems", canvas.width/2 - random(-10, 10), canvas.height/4 + random(70, 90), 
@@ -302,6 +303,7 @@ function draw() {
                             quest = "None";
                             goblinsKilled = 0;
                             changeGems(20000)
+                            player.exp+=100000
                             player.hp+=300;
                             popUps.push(new popUp("Quest Complete", canvas.width/2 - random(-10, 10), canvas.height/4 + random(-20, 20), 
  50, 300))
@@ -785,7 +787,7 @@ function draw() {
                 player.y = 0;
                 popUps.push(new popUp("Doungen Cleared [+50000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
                 changeGems(50000);
-                player.exp+=1000;
+                player.exp+=10000;
                 scene = "adventure";
                 grass = [];
                 for(var i = 0; i < 10; i+=1) {
@@ -795,8 +797,9 @@ function draw() {
                     doungensCleared+=1;
                     quest = "Clear 3 Doungens: " + doungensCleared + "/" + "3"
                     if(doungensCleared >= 3) {
-                        popUps.push(new popUp("Quest Complete [+200000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
-                        changeGems(200000);
+                        popUps.push(new popUp("Quest Complete [+2000000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
+                        changeGems(2000000);
+                        player.exp+=1000000;
                         quest = "None";
                     }
                 }
@@ -914,9 +917,9 @@ function draw() {
             if(eD <= 0) {
                 player.x = 16550;
                 player.y = 0;
-                popUps.push(new popUp("Doungen Cleared [+500000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
-                changeGems(500000);
-                player.exp+=1000;
+                popUps.push(new popUp("Doungen Cleared [+1500000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
+                changeGems(1500000);
+                player.exp+=20000;
                 grass = [];
                 for(var i = 0; i < 10; i+=1) {
                     grass.push([random(0, canvas.width) + cam.x, random(0, canvas.height) + cam.y])
@@ -928,6 +931,7 @@ function draw() {
                     if(doungensCleared >= 3) {
                         popUps.push(new popUp("Quest Complete [+2000000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
                         changeGems(2000000);
+                        player.exp+=1000000;
                         quest = "None";
                     }
                 }
