@@ -254,11 +254,11 @@ Player.prototype.draw = function() {
         fill(220, 175, 120);
         ellipse(player.x + cos(player.r) * 40 - cam.x, player.y + sin(player.r) * 40 - cam.y, 10, 10, 0)
         strokeWeight(20);
-        line(player.x + cos(player.r) * 60 - cam.x, player.y + sin(player.r) * 60 - cam.y, player.x + cos(player.r) * 225 - cam.x, player.y + sin(player.r) * 225 - cam.y);
+        line(player.x + cos(player.r) * 60 - cam.x, player.y + sin(player.r) * 60 - cam.y, player.x + cos(player.r) * 190 - cam.x, player.y + sin(player.r) * 190 - cam.y);
         fill(10, 10, 10)
-        triangle(player.x + cos(player.r) * 245 - cam.x, player.y + sin(player.r) * 245 - cam.y,
-                player.x + cos(player.r) * 224 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 224 - cam.y + sin(player.r + 1.5) * 10,
-                player.x + cos(player.r) * 224 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 224 - cam.y + sin(player.r - 1.5) * 10);
+        triangle(player.x + cos(player.r) * 245 - cam.x, player.y + sin(player.r) * 200 - cam.y,
+                player.x + cos(player.r) * 224 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 189 - cam.y + sin(player.r + 1.5) * 10,
+                player.x + cos(player.r) * 224 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 189 - cam.y + sin(player.r - 1.5) * 10);
         fill(255, 200, 155);
         ellipse(player.x + cos(player.r) * 45 - cam.x, player.y + sin(player.r) * 45 - cam.y, 10, 10, 0)
     } else if(this.inventory[this.selectedInventory] === "Dagmor") {
@@ -277,11 +277,11 @@ Player.prototype.draw = function() {
         fill(220, 175, 120);
         ellipse(player.x + cos(player.r) * 40 - cam.x, player.y + sin(player.r) * 40 - cam.y, 10, 10, 0)
         strokeWeight(20);
-        line(player.x + cos(player.r) * 60 - cam.x, player.y + sin(player.r) * 60 - cam.y, player.x + cos(player.r) * 195 - cam.x, player.y + sin(player.r) * 195 - cam.y);
+        line(player.x + cos(player.r) * 60 - cam.x, player.y + sin(player.r) * 60 - cam.y, player.x + cos(player.r) * 155 - cam.x, player.y + sin(player.r) * 155 - cam.y);
         fill(30, 30, 30)
-        triangle(player.x + cos(player.r) * 215 - cam.x, player.y + sin(player.r) * 215 - cam.y,
-                player.x + cos(player.r) * 194 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 194 - cam.y + sin(player.r + 1.5) * 10,
-                player.x + cos(player.r) * 194 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 194 - cam.y + sin(player.r - 1.5) * 10);
+        triangle(player.x + cos(player.r) * 215 - cam.x, player.y + sin(player.r) * 175 - cam.y,
+                player.x + cos(player.r) * 194 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 154 - cam.y + sin(player.r + 1.5) * 10,
+                player.x + cos(player.r) * 194 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 154 - cam.y + sin(player.r - 1.5) * 10);
         fill(255, 200, 155);
         ellipse(player.x + cos(player.r) * 45 - cam.x, player.y + sin(player.r) * 45 - cam.y, 10, 10, 0)
     } else if(this.inventory[this.selectedInventory] === "Penatrator") {
@@ -300,11 +300,11 @@ Player.prototype.draw = function() {
         fill(220, 175, 120);
         ellipse(player.x + cos(player.r) * 40 - cam.x, player.y + sin(player.r) * 40 - cam.y, 10, 10, 0)
         strokeWeight(20);
-        line(player.x + cos(player.r) * 60 - cam.x, player.y + sin(player.r) * 60 - cam.y, player.x + cos(player.r) * 180 - cam.x, player.y + sin(player.r) * 180 - cam.y);
+        line(player.x + cos(player.r) * 60 - cam.x, player.y + sin(player.r) * 60 - cam.y, player.x + cos(player.r) * 140 - cam.x, player.y + sin(player.r) * 140 - cam.y);
         fill(150, 150, 150)
-        triangle(player.x + cos(player.r) * 195 - cam.x, player.y + sin(player.r) * 195 - cam.y,
-                player.x + cos(player.r) * 179 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 179 - cam.y + sin(player.r + 1.5) * 10,
-                player.x + cos(player.r) * 179 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 179 - cam.y + sin(player.r - 1.5) * 10);
+        triangle(player.x + cos(player.r) * 195 - cam.x, player.y + sin(player.r) * 160 - cam.y,
+                player.x + cos(player.r) * 179 - cam.x + cos(player.r + 1.5) * 10, player.y + sin(player.r) * 139 - cam.y + sin(player.r + 1.5) * 10,
+                player.x + cos(player.r) * 179 - cam.x + cos(player.r - 1.5) * 10, player.y + sin(player.r) * 139 - cam.y + sin(player.r - 1.5) * 10);
         fill(255, 200, 155);
         ellipse(player.x + cos(player.r) * 45 - cam.x, player.y + sin(player.r) * 45 - cam.y, 10, 10, 0)
     } else if(this.inventory[this.selectedInventory] === "Ring of Slimes Lv. 1") {
@@ -477,8 +477,8 @@ Player.prototype.draw = function() {
         fill(255, 255, 255);
         text(this.inventory[i], canvas.width - 200, canvas.height - 25 - i * 60, 20)
     }
-    if(this.exp > (this.lvl * this.lvl)/(this.lvl * 0.25) * 10) {
-        this.exp-=(this.lvl * this.lvl)/(this.lvl * 0.25) * 10;
+    if(this.exp > (this.lvl * this.lvl)/(this.lvl * 0.1) * 2) {
+        this.exp-=(this.lvl * this.lvl)/(this.lvl * 0.1) * 2;
         this.lvl+=1;
         this.maxHp = parseInt(this.maxHp);
         this.maxHp+=(this.lvl * this.lvl) * 0.2;
