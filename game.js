@@ -281,38 +281,36 @@ function draw() {
                 collideRect(50, -125, 200, 175, npcs[i]);
                 collideRect(300, -125, 200, 175, npcs[i]);
                 if(npcs[i].hp <= 0) {
-                    if(npcs[i].playerHit >= 0) {
-                        changeGems(npcs[i].gems);
-                        if(quest[5] === "6" && quest[7] === "S" && quest[8] == "l" && quest[9] == "i" && npcs[i].type === "Slime Lv. 1") {
-                            slimesKilled+=1;
-                            quest = "Kill 6 Slimes || " + slimesKilled + "/" + 6
-                            if(slimesKilled >= 6) {
-                                quest = "None";
-                                slimesKilled = 0;
-                                changeGems(300)
-                                player.hp+=10;
-                                popUps.push(new popUp("Quest Complete", canvas.width/2 - random(-10, 10), canvas.height/4 + random(-20, 20), 
-     50, 300))
-                                popUps.push(new popUp("+300 Gems", canvas.width/2 - random(-10, 10), canvas.height/4 + random(70, 90), 
-     20, 300))
-                            }
-                        } else if(quest[5] === "1" && quest[6] === "0" && quest[8] == "G" && quest[9] === "o" && quest[10] === "b" && npcs[i].type === "Goblin") {
-                            goblinsKilled+=1;
-                            quest = "Kill 10 Goblins || " + goblinsKilled + "/" + 10
-                            if(goblinsKilled >= 10) {
-                                quest = "None";
-                                goblinsKilled = 0;
-                                changeGems(1000)
-                                player.hp+=30;
-                                popUps.push(new popUp("Quest Complete", canvas.width/2 - random(-10, 10), canvas.height/4 + random(-20, 20), 
-     50, 300))
-                                popUps.push(new popUp("+1000 Gems", canvas.width/2 - random(-10, 10), canvas.height/4 + random(70, 90), 
-     20, 300))
-                            }
+                    changeGems(npcs[i].gems);
+                    if(quest[5] === "6" && quest[7] === "S" && quest[8] == "l" && quest[9] == "i" && npcs[i].type === "Slime Lv. 1") {
+                        slimesKilled+=1;
+                        quest = "Kill 6 Slimes || " + slimesKilled + "/" + 6
+                        if(slimesKilled >= 6) {
+                            quest = "None";
+                            slimesKilled = 0;
+                            changeGems(300)
+                            player.hp+=10;
+                            popUps.push(new popUp("Quest Complete", canvas.width/2 - random(-10, 10), canvas.height/4 + random(-20, 20), 
+ 50, 300))
+                            popUps.push(new popUp("+300 Gems", canvas.width/2 - random(-10, 10), canvas.height/4 + random(70, 90), 
+ 20, 300))
                         }
-                        if(npcs[i].team === "enemy") {
-                            player.exp+=npcs[i].exp;
+                    } else if(quest[5] === "1" && quest[6] === "0" && quest[8] == "G" && quest[9] === "o" && quest[10] === "b" && npcs[i].type === "Goblin") {
+                        goblinsKilled+=1;
+                        quest = "Kill 10 Goblins || " + goblinsKilled + "/" + 10
+                        if(goblinsKilled >= 10) {
+                            quest = "None";
+                            goblinsKilled = 0;
+                            changeGems(1000)
+                            player.hp+=30;
+                            popUps.push(new popUp("Quest Complete", canvas.width/2 - random(-10, 10), canvas.height/4 + random(-20, 20), 
+ 50, 300))
+                            popUps.push(new popUp("+1000 Gems", canvas.width/2 - random(-10, 10), canvas.height/4 + random(70, 90), 
+ 20, 300))
                         }
+                    }
+                    if(npcs[i].team === "enemy") {
+                        player.exp+=npcs[i].exp;
                     }
                     npcs.splice(i, 1);
                 }
@@ -740,6 +738,11 @@ function draw() {
                     dNpcs[i].draw();
                 }
                 dNpcs[i].update();
+                if(dNpcs[i].x > -3400 && dNpcs[i].y > -720 && dNpcs[i].x < -1700 && dNpcs[i].y < 880 || dNpcs[i].x > -1980 && dNpcs[i].y > -140 && dNpcs[i].x < -300 && dNpcs[i].y < 160 || dNpcs[i].x > -400 && dNpcs[i].y > -320 && dNpcs[i].x < 480 && dNpcs[i].y < 480) {
+                    
+                } else {
+                    dNpcs[i].hp = -1;
+                }
                 for(var j = 0; j < dNpcs.length; j+=1) {
                     if(i !== j) {
                         dNpcs[i].collide(dNpcs[j], i, j)
@@ -877,11 +880,9 @@ function draw() {
             collideRect(-1880, -230, 1400, 160, dNpcs[i]);
             collideRect(-1880, 90, 1400, 160, dNpcs[i]);
                 if(dNpcs[i].hp <= 0) {
-                    if(dNpcs[i].playerHit >= 0) {
-                        changeGems(dNpcs[i].gems);
-                        if(dNpcs[i].team === "enemy") {
-                            player.exp+=dNpcs[i].exp;
-                        }
+                    changeGems(dNpcs[i].gems);
+                    if(dNpcs[i].team === "enemy") {
+                        player.exp+=dNpcs[i].exp;
                     }
                     dNpcs.splice(i, 1);
                 }
