@@ -219,11 +219,11 @@ function draw() {
                 text("Spacebar to talk to Bob the Gaurd", canvas.width/2, canvas.height - 30, 30)
                 if(keys[32]) {
                     talking = true;
-                    if(player.upgrades < 40) {
+                    if(player.upgrades < 10) {
                         talkingTo = "Gaurd 1"
-                    } else if(player.upgrades >= 40) {
+                    } else if(player.upgrades >= 10) {
                         talkingTo = "Gaurd 2"
-                    }else if(player.upgrades >= 70) {
+                    }else if(player.upgrades >= 40) {
                         talkingTo = "Gaurd 3"
                     }
                 }
