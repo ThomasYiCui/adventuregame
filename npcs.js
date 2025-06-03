@@ -37,7 +37,7 @@ function npc(x, y, type, team) {
             this.spd = 4.8;
             this.range = 500;
             this.atkRange = 50;
-            this.exp = 10;
+            this.exp = 20;
             this.weight = 0.95;
             this.jumpCool = 100;
             this.knockBack = 3;
@@ -54,7 +54,7 @@ function npc(x, y, type, team) {
             this.spd = 9.6;
             this.range = 1000;
             this.atkRange = 90;
-            this.exp = 13;
+            this.exp = 26;
             this.weight = 0.94;
             this.jumpCool = 80;
             this.knockBack = 6;
@@ -71,7 +71,7 @@ function npc(x, y, type, team) {
             this.spd = 9.6;
             this.range = 1000;
             this.atkRange = 80;
-            this.exp = 35;
+            this.exp = 40;
             this.weight = 0.94;
             this.jumpCool = 80;
             this.knockBack = 6;
@@ -88,7 +88,7 @@ function npc(x, y, type, team) {
             this.spd = 9.6;
             this.range = 1000;
             this.atkRange = 120;
-            this.exp = 111;
+            this.exp = 50;
             this.weight = 0.94;
             this.jumpCool = 80;
             this.knockBack = 6;
@@ -105,7 +105,7 @@ function npc(x, y, type, team) {
             this.spd = 13.8;
             this.range = 1000;
             this.atkRange = 200;
-            this.exp = 1103;
+            this.exp = 60;
             this.weight = 0.94;
             this.jumpCool = 80;
             this.knockBack = 6;
@@ -122,7 +122,7 @@ function npc(x, y, type, team) {
             this.spd = 14.4;
             this.range = 1200;
             this.atkRange = 100;
-            this.exp = 132;
+            this.exp = 100;
             this.weight = 0.93;
             this.jumpCool = 80;
             this.knockBack = 12;
@@ -139,7 +139,7 @@ function npc(x, y, type, team) {
             this.spd = 4;
             this.range = 1000;
             this.atkRange = 160;
-            this.exp = 6110;
+            this.exp = 610;
             this.weight = 0.98;
             this.jumpCool = 80;
             this.knockBack = 20;
@@ -156,7 +156,7 @@ function npc(x, y, type, team) {
             this.spd = 2;
             this.range = 1000;
             this.atkRange = 140;
-            this.exp = 2103;
+            this.exp = 210;
             this.weight = 0.98;
             this.jumpCool = 80;
             this.knockBack = 10;
@@ -173,7 +173,7 @@ function npc(x, y, type, team) {
             this.spd = 4.8;
             this.range = 900;
             this.atkRange = 90;
-            this.exp = 312;
+            this.exp = 301;
             this.weight = 0.99;
             this.knockBack = 6;
             this.gems = 2028;
@@ -205,7 +205,7 @@ function npc(x, y, type, team) {
             this.spd = 2.2;
             this.range = 3200;
             this.atkRange = 70;
-            this.exp = 1053;
+            this.exp = 105;
             this.weight = 0.99;
             this.knockBack = 6;
             this.gems = 515;
@@ -222,7 +222,7 @@ function npc(x, y, type, team) {
             this.spd = 1.5;
             this.range = 800;
             this.atkRange = 50;
-            this.exp = 7060;
+            this.exp = 706;
             this.weight = 0.98;
             this.knockBack = 9;
             this.gems = 2006;
@@ -238,7 +238,7 @@ function npc(x, y, type, team) {
             this.spd = 2.3;
             this.range = 800;
             this.atkRange = 200;
-            this.exp = 10300;
+            this.exp = 1030;
             this.weight = 0.98;
             this.knockBack = 9;
             this.gems = 10323;
@@ -255,7 +255,7 @@ function npc(x, y, type, team) {
             this.range = 1900;
             this.atkRange = 201;
             this.knockBack = 18;
-            this.exp = 10075;
+            this.exp = 2000;
             this.weight = 0.99;
             this.gems = 36120;;
             this.blockChance = 50;
@@ -271,7 +271,7 @@ function npc(x, y, type, team) {
             this.range = 1900;
             this.atkRange = 70;
             this.knockBack = 9;
-            this.exp = 20575;
+            this.exp = 1500;
             this.weight = 0.99;
             this.gems = 16120;
             this.blockChance = 50;
@@ -287,7 +287,7 @@ function npc(x, y, type, team) {
             this.range = 1900;
             this.atkRange = 60;
             this.knockBack = 9;
-            this.exp = 20675;
+            this.exp = 1500;
             this.weight = 0.99;
             this.gems = 21210;
             this.blockChance = 10;
@@ -302,7 +302,7 @@ function npc(x, y, type, team) {
             this.spd = 3.2;
             this.range = 700;
             this.atkRange = 90;
-            this.exp = 40010;
+            this.exp = 1000;
             this.knockBack = 15;
             this.weight = 0.99;
             this.gems = 19342;
@@ -318,7 +318,7 @@ function npc(x, y, type, team) {
             this.spd = 3;
             this.range = 500;
             this.atkRange = 70;
-            this.exp = 20910;
+            this.exp = 600;
             this.weight = 0.99;
             this.knockBack = 9;
             this.gems = 1830;
@@ -351,7 +351,7 @@ function npc(x, y, type, team) {
             this.range = 1900;
             this.atkRange = 70;
             this.knockBack = 9;
-            this.exp = 3075;
+            this.exp = 1000;
             this.weight = 0.99;
             this.gems = 3612;
             this.blockChance = 5;
@@ -367,7 +367,7 @@ function npc(x, y, type, team) {
             this.range = 1900;
             this.atkRange = 150;
             this.knockBack = 9;
-            this.exp = 1575;
+            this.exp = 1000;
             this.weight = 0.99;
             this.gems = 3000;
             this.blockChance = 1;
@@ -384,7 +384,7 @@ function npc(x, y, type, team) {
             this.range = 1800;
             this.atkRange = 150;
             this.knockBack = 9;
-            this.exp = 10632;
+            this.exp = 1500;
             this.weight = 0.9;
             this.gems = 32012;
             this.blockChance = 1;
@@ -401,7 +401,7 @@ function npc(x, y, type, team) {
             this.range = 1800;
             this.atkRange = 200;
             this.knockBack = 13;
-            this.exp = 10561;
+            this.exp = 1500;
             this.weight = 0.9;
             this.gems = 32925;
             this.blockChance = 1;
@@ -418,7 +418,7 @@ function npc(x, y, type, team) {
             this.range = 1800;
             this.atkRange = 100;
             this.knockBack = 5;
-            this.exp = 50452;
+            this.exp = 2000;
             this.weight = 0.97;
             this.gems = 160012;
             this.blockChance = 90;
@@ -437,7 +437,7 @@ function npc(x, y, type, team) {
             this.range = 1800;
             this.atkRange = 120;
             this.knockBack = 10;
-            this.exp = 254520;
+            this.exp = 3000;
             this.weight = 0.97;
             this.gems = 500120;
             this.blockChance = 90;
