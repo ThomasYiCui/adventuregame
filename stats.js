@@ -311,6 +311,17 @@ var projectileStats = {
         effect: [["lightning", 1, 1]],
         reload: 0,
     },
+    "Lightning Ball": {
+        size: 0,
+        dmg: 0,
+        range: 0,
+        decayRate: 0,
+        spd: 0,
+        cost: 0,
+        knockback: 0.01,
+        effect: [],
+        reload: 1,
+    },
     "Blue": {
         size: 1000,
         dmg: 5,
