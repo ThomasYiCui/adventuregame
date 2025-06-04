@@ -62,10 +62,10 @@ function npc(x, y, type, team) {
             this.blockChance = 1;
         break;
         case "Slime Lv. 3":
-            this.hp = 440;
+            this.hp = 1040;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 80;
+            this.dmg = 280;
             this.size = 20;
             this.reload = 25;
             this.spd = 9.6;
@@ -79,7 +79,7 @@ function npc(x, y, type, team) {
             this.blockChance = 2;
         break;
         case "Slime Lv. 4":
-            this.hp = 1340;
+            this.hp = 5340;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 780;
@@ -96,10 +96,10 @@ function npc(x, y, type, team) {
             this.blockChance = 2;
         break;
         case "Slime Lv. 5":
-            this.hp = 10340;
+            this.hp = 20340;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 25880;
+            this.dmg = 5880;
             this.size = 70;
             this.reload = 25;
             this.spd = 13.8;
