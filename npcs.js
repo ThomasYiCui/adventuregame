@@ -484,9 +484,9 @@ function npc(x, y, type, team) {
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 80000;
-            this.size = 20;
+            this.size = 30;
             this.reload = 50;
-            this.spd = 4;
+            this.spd = 5;
             this.range = 1800;
             this.atkRange = 120;
             this.knockBack = 10;
