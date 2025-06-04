@@ -302,8 +302,8 @@ function draw() {
                         if(goblinsKilled >= 10) {
                             quest = "None";
                             goblinsKilled = 0;
-                            changeGems(20000)
-                            player.exp+=100000
+                            changeGems(5000)
+                            player.exp+=5000
                             player.hp+=300;
                             popUps.push(new popUp("Quest Complete", canvas.width/2 - random(-10, 10), canvas.height/4 + random(-20, 20), 
  50, 300))
@@ -799,7 +799,7 @@ function draw() {
                     if(doungensCleared >= 3) {
                         popUps.push(new popUp("Quest Complete [+2000000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
                         changeGems(2000000);
-                        player.exp+=1000000;
+                        player.exp+=10000;
                         quest = "None";
                     }
                 }
