@@ -438,8 +438,8 @@ function draw() {
             text("Base", canvas.width/2 - cos(atan2(player.y - 15, player.x - 95)) * 400, canvas.height/2 - sin(atan2(player.y - 15, player.x - 195)) * 200, 15)
             text("Desert Dungeon", canvas.width/2 - cos(atan2(player.y - 0, player.x + 18550)) * 200, canvas.height/2 - sin(atan2(player.y - 0, player.x + 18550)) * 200 + 7.5, 15)
             text("Snow Dungeon", canvas.width/2 - cos(atan2(player.y - 0, player.x - 16550)) * 200, canvas.height/2 - sin(atan2(player.y - 0, player.x - 16550)) * 200 + 7.5, 15)
-            text("Molten Dungeon", canvas.width/2 - cos(atan2(player.y + 16550, player.x + 0)) * 200, canvas.height/2 - sin(atan2(player.y + 16550, player.x + 0)) * 200 + 7.5, 15)
-            text("Elf Dungeon", canvas.width/2 - cos(atan2(player.y - 18550, player.x + 0)) * 200, canvas.height/2 - sin(atan2(player.y - 18550, player.x + 0)) * 200 + 7.5, 15)
+            text("Molten Dungeon", canvas.width/2 - cos(atan2(player.y - 16550, player.x + 0)) * 200, canvas.height/2 - sin(atan2(player.y - 16550, player.x + 0)) * 200 + 7.5, 15)
+            text("Elf Dungeon", canvas.width/2 - cos(atan2(player.y + 18550, player.x + 0)) * 200, canvas.height/2 - sin(atan2(player.y + 18550, player.x + 0)) * 200 + 7.5, 15)
         break;
         case "shop":
             button(20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
