@@ -1031,7 +1031,7 @@ npc.prototype.update = function() {
         } else if(this.type == "Dungeon Molten Boss") {
             eD+=1;
             for(var i = 0; i < this.rocks.length; i+=1) {
-                if(rocks[i]) {
+                if(this.rocks[i]) {
                     this.rocks[i][0] = lerp(this.rocks[i][0], this.rocksT[i][0], 0.02)
                     this.rocks[i][1] = lerp(this.rocks[i][1], this.rocksT[i][1], 0.02)
                 }
