@@ -1158,7 +1158,7 @@ function draw() {
             }
             if(eD <= 0) {
                 player.x = 0;
-                player.y = -17550;
+                player.y = 17550;
                 popUps.push(new popUp("Doungen Cleared [+200000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
                 changeGems(200000);
                 player.exp+=30000;
