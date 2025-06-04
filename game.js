@@ -193,6 +193,10 @@ function draw() {
             
             dungeon(16550, 0, [205, 205, 245], "Snow Dungeon")
 
+            dungeon(0, -18550, [51, 102, 0], "Elf Dungeon")
+
+            dungeon(0, 16550, [255, 102, 0], "Molten Dungeon")
+
             fill(0, 0, 0);
             rect(-233 - cam.x, -647 - cam.y, 66, 556);
             rect(-233 - cam.x, -703 - cam.y, 1006, 67);
@@ -416,9 +420,11 @@ function draw() {
             }
             fill(0, 0, 0);
             textAlign("center");
-            text("Base", canvas.width/2 - cos(atan2(player.y - 15, player.x - 95)) * 400, canvas.height/2 - sin(atan2(player.y - 15, player.x - 195)) * 400, 15)
-            text("Desert Dungeon", canvas.width/2 - cos(atan2(player.y - 0, player.x + 18550)) * 400, canvas.height/2 - sin(atan2(player.y - 0, player.x + 18550)) * 400 + 7.5, 15)
-            text("Snow Dungeon", canvas.width/2 - cos(atan2(player.y - 0, player.x - 16550)) * 400, canvas.height/2 - sin(atan2(player.y - 0, player.x - 16550)) * 400 + 7.5, 15)
+            text("Base", canvas.width/2 - cos(atan2(player.y - 15, player.x - 95)) * 400, canvas.height/2 - sin(atan2(player.y - 15, player.x - 195)) * 200, 15)
+            text("Desert Dungeon", canvas.width/2 - cos(atan2(player.y - 0, player.x + 18550)) * 200, canvas.height/2 - sin(atan2(player.y - 0, player.x + 18550)) * 200 + 7.5, 15)
+            text("Snow Dungeon", canvas.width/2 - cos(atan2(player.y - 0, player.x - 16550)) * 200, canvas.height/2 - sin(atan2(player.y - 0, player.x - 16550)) * 200 + 7.5, 15)
+            text("Elf Dungeon", canvas.width/2 - cos(atan2(player.y - 18550, player.x + 0)) * 200, canvas.height/2 - sin(atan2(player.y - 18550, player.x + 0)) * 200 + 7.5, 15)
+            text("Molten Dungeon", canvas.width/2 - cos(atan2(player.y + 16550, player.x + 0)) * 200, canvas.height/2 - sin(atan2(player.y + 16550, player.x + 0)) * 200 + 7.5, 15)
         break;
         case "shop":
             button(20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
@@ -949,6 +955,218 @@ function draw() {
                 player.y = 0;
                 player.hp = player.maxHp;
                 scene = "adventure";
+                grass = [];
+                for(var i = 0; i < 10; i+=1) {
+                    grass.push([random(0, canvas.width) + cam.x, random(0, canvas.height) + cam.y])
+                }
+            }
+        break;
+        case "Elf Dungeon":
+            if(player.x > -3400 && player.y > -720 && player.x < -1700 && player.y < 880 || player.x > -1980 && player.y > -140 && player.x < -300 && player.y < 160 || player.x > -400 && player.y > -320 && player.x < 480 && player.y < 480) {
+                    
+            } else {
+                player.hp = -1;
+            }
+            fill(60, 40, 40);
+            rect(0, 0, canvas.width, canvas.height);
+            fill(100, 60, 60);
+            wall(-3400, -800, 1520, 160);
+            wall(-3400, 800, 1600, 160);
+            wall(-3480, -800, 160, 1720);
+            wall(-1880, -800, 160, 730);
+            wall(-1880, 100, 160, 800);
+            
+            wall(-400, -400, 800, 160);
+            wall(-400, 400, 800, 160);
+            wall(400, -400, 160, 880);
+            wall(-480, -400, 160, 330);
+            wall(-480, 100, 160, 480);
+            
+            wall(-1880, -230, 1400, 160);
+            wall(-1880, 100, 1400, 160);
+            
+            tpblock(-4000, -4000, 600, 8000)
+            textAlign("center");
+            for(var i = 0; i < dNpcs.length; i+=1) {
+                if(dNpcs[i].x - cam.x >= -dNpcs[i].size && dNpcs[i].y - cam.y >= -dNpcs[i].size && dNpcs[i].x - cam.x <= canvas.width + dNpcs[i].size && dNpcs[i].y - cam.y <= canvas.height + dNpcs[i].size) {
+                    dNpcs[i].draw();
+                }
+                dNpcs[i].update();
+                if(dNpcs[i].x > -3400 && dNpcs[i].y > -720 && dNpcs[i].x < -1700 && dNpcs[i].y < 880 || dNpcs[i].x > -1980 && dNpcs[i].y > -140 && dNpcs[i].x < -300 && dNpcs[i].y < 160 || dNpcs[i].x > -400 && dNpcs[i].y > -320 && dNpcs[i].x < 480 && dNpcs[i].y < 480) {
+                    
+                } else {
+                    dNpcs[i].hp = -1;
+                }
+                for(var j = 0; j < dNpcs.length; j+=1) {
+                    if(i !== j) {
+                        dNpcs[i].collide(dNpcs[j], i, j)
+                    }
+                }
+                if(dNpcs[i].hp <= 0) {
+                    changeGems(dNpcs[i].gems);
+                    if(dNpcs[i].team === "enemy") {
+                        player.exp+=dNpcs[i].exp;
+                    }
+                    dNpcs.splice(i, 1);
+                }
+            }
+            for(var i = 0; i < projectiles.length; i+=1) {
+                projectiles[i].draw();
+                projectiles[i].update();
+                for(var j = 0; j < dNpcs.length; j+=1) {
+                    projectiles[i].collide(dNpcs[j])
+                }
+                projectiles[i].collide(player);
+                if(projectiles[i].life <= 0) {
+                    projectiles.splice(i, 1)
+                }
+            }
+            textAlign("center");
+            for(var i = 0; i < popUps.length; i+=1) {
+                popUps[i].draw();
+                popUps[i].update();
+                if(popUps[i].lifeTime <= 0) {
+                    popUps.splice(i, 1);
+                }
+            }
+            player.draw();
+            cam = {
+                x: lerp(cam.x, player.x - canvas.width/2, 0.04),
+                y: lerp(cam.y, player.y - canvas.height/2, 0.04),
+            }
+            if(eD <= 0) {
+                player.x = -18550;
+                player.y = 0;
+                popUps.push(new popUp("Doungen Cleared [+50000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
+                changeGems(50000);
+                player.exp+=10000;
+                scene = "adventure";
+                grass = [];
+                for(var i = 0; i < 10; i+=1) {
+                    grass.push([random(0, canvas.width) + cam.x, random(0, canvas.height) + cam.y])
+                }
+                if(quest[0] == "C" && quest[1] == "l" && quest[6] == "3" && quest[8] == "D" && quest[9] == "o") {
+                    doungensCleared+=1;
+                    quest = "Clear 3 Doungens: " + doungensCleared + "/" + "3"
+                    if(doungensCleared >= 3) {
+                        popUps.push(new popUp("Quest Complete [+2000000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
+                        changeGems(2000000);
+                        player.exp+=10000;
+                        quest = "None";
+                    }
+                }
+            }
+            if(player.hp <= 0) {
+                player.x = 200;
+                player.y = 0;
+                player.hp = player.maxHp;
+                scene = "adventure"
+                grass = [];
+                for(var i = 0; i < 10; i+=1) {
+                    grass.push([random(0, canvas.width) + cam.x, random(0, canvas.height) + cam.y])
+                }
+            }
+        break;
+        case "Molten Dungeon":
+            if(player.x > -3400 && player.y > -720 && player.x < -1700 && player.y < 880 || player.x > -1980 && player.y > -140 && player.x < -300 && player.y < 160 || player.x > -400 && player.y > -320 && player.x < 480 && player.y < 480) {
+                    
+            } else {
+                player.hp = -1;
+            }
+            fill(60, 40, 40);
+            rect(0, 0, canvas.width, canvas.height);
+            fill(100, 60, 60);
+            wall(-3400, -800, 1520, 160);
+            wall(-3400, 800, 1600, 160);
+            wall(-3480, -800, 160, 1720);
+            wall(-1880, -800, 160, 730);
+            wall(-1880, 100, 160, 800);
+            
+            wall(-400, -400, 800, 160);
+            wall(-400, 400, 800, 160);
+            wall(400, -400, 160, 880);
+            wall(-480, -400, 160, 330);
+            wall(-480, 100, 160, 480);
+            
+            wall(-1880, -230, 1400, 160);
+            wall(-1880, 100, 1400, 160);
+            
+            tpblock(-4000, -4000, 600, 8000)
+            textAlign("center");
+            for(var i = 0; i < dNpcs.length; i+=1) {
+                if(dNpcs[i].x - cam.x >= -dNpcs[i].size && dNpcs[i].y - cam.y >= -dNpcs[i].size && dNpcs[i].x - cam.x <= canvas.width + dNpcs[i].size && dNpcs[i].y - cam.y <= canvas.height + dNpcs[i].size) {
+                    dNpcs[i].draw();
+                }
+                dNpcs[i].update();
+                if(dNpcs[i].x > -3400 && dNpcs[i].y > -720 && dNpcs[i].x < -1700 && dNpcs[i].y < 880 || dNpcs[i].x > -1980 && dNpcs[i].y > -140 && dNpcs[i].x < -300 && dNpcs[i].y < 160 || dNpcs[i].x > -400 && dNpcs[i].y > -320 && dNpcs[i].x < 480 && dNpcs[i].y < 480) {
+                    
+                } else {
+                    dNpcs[i].hp = -1;
+                }
+                for(var j = 0; j < dNpcs.length; j+=1) {
+                    if(i !== j) {
+                        dNpcs[i].collide(dNpcs[j], i, j)
+                    }
+                }
+                if(dNpcs[i].hp <= 0) {
+                    changeGems(dNpcs[i].gems);
+                    if(dNpcs[i].team === "enemy") {
+                        player.exp+=dNpcs[i].exp;
+                    }
+                    dNpcs.splice(i, 1);
+                }
+            }
+            for(var i = 0; i < projectiles.length; i+=1) {
+                projectiles[i].draw();
+                projectiles[i].update();
+                for(var j = 0; j < dNpcs.length; j+=1) {
+                    projectiles[i].collide(dNpcs[j])
+                }
+                projectiles[i].collide(player);
+                if(projectiles[i].life <= 0) {
+                    projectiles.splice(i, 1)
+                }
+            }
+            textAlign("center");
+            for(var i = 0; i < popUps.length; i+=1) {
+                popUps[i].draw();
+                popUps[i].update();
+                if(popUps[i].lifeTime <= 0) {
+                    popUps.splice(i, 1);
+                }
+            }
+            player.draw();
+            cam = {
+                x: lerp(cam.x, player.x - canvas.width/2, 0.04),
+                y: lerp(cam.y, player.y - canvas.height/2, 0.04),
+            }
+            if(eD <= 0) {
+                player.x = -18550;
+                player.y = 0;
+                popUps.push(new popUp("Doungen Cleared [+50000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
+                changeGems(50000);
+                player.exp+=10000;
+                scene = "adventure";
+                grass = [];
+                for(var i = 0; i < 10; i+=1) {
+                    grass.push([random(0, canvas.width) + cam.x, random(0, canvas.height) + cam.y])
+                }
+                if(quest[0] == "C" && quest[1] == "l" && quest[6] == "3" && quest[8] == "D" && quest[9] == "o") {
+                    doungensCleared+=1;
+                    quest = "Clear 3 Doungens: " + doungensCleared + "/" + "3"
+                    if(doungensCleared >= 3) {
+                        popUps.push(new popUp("Quest Complete [+2000000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
+                        changeGems(2000000);
+                        player.exp+=10000;
+                        quest = "None";
+                    }
+                }
+            }
+            if(player.hp <= 0) {
+                player.x = 200;
+                player.y = 0;
+                player.hp = player.maxHp;
+                scene = "adventure"
                 grass = [];
                 for(var i = 0; i < 10; i+=1) {
                     grass.push([random(0, canvas.width) + cam.x, random(0, canvas.height) + cam.y])
