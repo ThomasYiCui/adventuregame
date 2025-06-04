@@ -193,7 +193,7 @@ Player.prototype.draw = function() {
     fill(200, 150, 30);
     rect(15, canvas.height - 65, (this.stamina/this.maxStamina) * 200, 25);
     fill(250, 200, 40);
-    rect(15, canvas.height - 100, (this.exp/(((this.lvl * this.lvl)/(this.lvl * 0.25)) * 10)) * 200, 25);
+    rect(15, canvas.height - 100, (this.exp/(100 + (this.lvl * this.lvl)) * 200, 25);
     if(this.inventory[this.selectedInventory] === "Iron Sword") {
         strokeWeight(7);
         if(this.attacking) {
@@ -501,8 +501,8 @@ Player.prototype.draw = function() {
         fill(255, 255, 255);
         text(this.inventory[i], canvas.width - 200, canvas.height - 25 - i * 60, 20)
     }
-    if(this.exp > (this.lvl * this.lvl)/(this.lvl * 0.1) * 2) {
-        this.exp-=(this.lvl * this.lvl)/(this.lvl * 0.1) * 2;
+    if(this.exp > (100 + (this.lvl * this.lvl))) {
+        this.exp-=(100 + (this.lvl * this.lvl));
         this.lvl+=1;
         this.maxHp = parseInt(this.maxHp);
         this.maxHp+=(this.lvl * this.lvl) * 0.2;
