@@ -203,7 +203,7 @@ function npc(x, y, type, team) {
             this.size = 20;
             this.reload = 30
             this.spd = 2.2;
-            this.range = 3200;
+            this.range = 700;
             this.atkRange = 50;
             this.exp = 105;
             this.weight = 0.99;
@@ -220,7 +220,7 @@ function npc(x, y, type, team) {
             this.size = 20;
             this.reload = 25
             this.spd = 1.5;
-            this.range = 70;
+            this.range = 700;
             this.atkRange = 50;
             this.exp = 706;
             this.weight = 0.98;
