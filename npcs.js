@@ -419,26 +419,45 @@ function npc(x, y, type, team) {
             this.atkRange = 100;
             this.knockBack = 5;
             this.exp = 2000;
-            this.weight = 0.97;
+            this.weight = 0.3;
             this.gems = 6012;
             this.blockChance = 90;
             this.accruacy = 0.01;
             this.rocks = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
             this.rocksT = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
         break;
-        case "Molten Boss":
-            this.hp = 20000000;
+        case "Dungeon Elf Boss":
+            this.hp = 10000000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 16000000;
-            this.size = 60;
-            this.reload = 200;
+            this.dmg = 80000;
+            this.size = 20;
+            this.reload = 50;
             this.spd = 4;
             this.range = 1800;
             this.atkRange = 120;
             this.knockBack = 10;
             this.exp = 3000;
-            this.weight = 0.97;
+            this.weight = 0.1;
+            this.gems = 6120;
+            this.blockChance = 90;
+            this.accruacy = 0.01;
+            this.rocks = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
+            this.rocksT = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
+        break;
+        case "Dungeon Molten Boss":
+            this.hp = 20000000;
+            this.maxHp = this.hp;
+            this.dmgWay = "hit";
+            this.dmg = 16000000;
+            this.size = 180;
+            this.reload = 1000;
+            this.spd = 4;
+            this.range = 900;
+            this.atkRange = 120;
+            this.knockBack = 10;
+            this.exp = 6000;
+            this.weight = 0.1;
             this.gems = 10120;
             this.blockChance = 90;
             this.accruacy = 0.01;
@@ -746,6 +765,15 @@ npc.prototype.draw = function() {
             this.daggerR = 100;
         }
         this.daggerR-=1;
+    } else if(this.type === "Dungeon Molten Boss") {
+        fill(0, 0, 0);
+        ellipse(this.x - cam.x, this.y - cam.y, this.size + 3, this.size + 3, 0);
+        fill(200, 150, 30);
+        ellipse(this.x - cam.x, this.y - cam.y, this.size, this.size, 0);
+        for(var i = 0; i < this.rocks.length; i+=1) {
+            fill(150, 50, 10);
+            ellipse(this.rocks[i][0] - cam.x, this.rocks[i][1] - cam.y, 13, 13, 0);
+        }
     } else {
         textAlign("center");
         fill(0, 0, 0);
