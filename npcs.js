@@ -465,11 +465,11 @@ function npc(x, y, type, team) {
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 4000000;
-            this.size = 60;
+            this.size = 40;
             this.reload = 120;
             this.spd = 3;
             this.range = 1800;
-            this.atkRange = 100;
+            this.atkRange = 250;
             this.knockBack = 5;
             this.exp = 3000;
             this.weight = 0.3;
@@ -484,11 +484,11 @@ function npc(x, y, type, team) {
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 80000;
-            this.size = 30;
+            this.size = 60;
             this.reload = 50;
             this.spd = 5;
             this.range = 1800;
-            this.atkRange = 120;
+            this.atkRange = 250;
             this.knockBack = 10;
             this.exp = 3000;
             this.weight = 0.1;
@@ -503,7 +503,7 @@ function npc(x, y, type, team) {
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 16000000;
-            this.size = 180;
+            this.size = 60;
             this.reload = 1000;
             this.spd = 4;
             this.range = 900;
@@ -817,6 +817,30 @@ npc.prototype.draw = function() {
             fill(100, 30, 10);
             ellipse(this.rocks[i][0] - cam.x, this.rocks[i][1] - cam.y, 13, 13, 0);
         }
+    } else if(this.type === "Dungeon Molten Boss") {
+        fill(0, 0, 0);
+        ellipse(this.x - cam.x, this.y - cam.y, this.size + 3, this.size + 3, 0);
+        fill(200, 150, 30);
+        ellipse(this.x - cam.x, this.y - cam.y, this.size, this.size, 0);
+        for(var i = 0; i < this.rocks.length; i+=1) {
+            fill(150, 50, 10);
+            ellipse(this.rocks[i][0] - cam.x, this.rocks[i][1] - cam.y, 13, 13, 0);
+        }
+    } else if(this.type == "Dungeon Elf Boss") {
+        strokeWeight(10);
+        stroke(90, 90, 90);
+        line(this.x - cam.x + (cos(this.r - 0.5 + this.rChange) * this.size) * 2,
+             this.y - cam.y + (sin(this.r - 0.5 + this.rChange) * this.size) * 2,
+             this.x - cam.x + (cos(this.r - 0.5 + this.rChange) * this.size) * 2 + cos(this.r + 1 + this.rChange) * (this.size) * 3,
+             this.y - cam.y + (sin(this.r - 0.5 + this.rChange) * this.size) * 2 + sin(this.r + 1 + this.rChange) * (this.size) * 3)
+        fill(0, 0, 0);
+        ellipse(this.x - cam.x, this.y - cam.y, this.size + 3, this.size + 3, 0);
+        ellipse(this.x - cam.x + (cos(this.r - 0.5 + this.rChange) * this.size) * 2, this.y - cam.y + (sin(this.r - 0.5 + this.rChange) * this.size) * 2, this.size/2.5 + 3, this.size/2.5 + 3, 0);
+        ellipse(this.x - cam.x + (cos(this.r + 0.5 + this.rChange) * this.size) * 2, this.y - cam.y + (sin(this.r + 0.5 + this.rChange) * this.size) * 2, this.size/2.5 + 3, this.size/2.5 + 3, 0);
+        fill(0, 150, 0);
+        ellipse(this.x - cam.x, this.y - cam.y, this.size, this.size, 0);
+        ellipse(this.x - cam.x + (cos(this.r - 0.5 + this.rChange) * this.size) * 2, this.y - cam.y + (sin(this.r - 0.5 + this.rChange) * this.size) * 2, this.size/2.5, this.size/2.5, 0);
+        ellipse(this.x - cam.x + (cos(this.r + 0.5 + this.rChange) * this.size) * 2, this.y - cam.y + (sin(this.r + 0.5 + this.rChange) * this.size) * 2, this.size/2.5, this.size/2.5, 0);
     }
     if(this.type == "Dungeon Goblin Boss") {
         fill(0, 0, 0);
@@ -853,13 +877,13 @@ npc.prototype.draw = function() {
         this.daggerR-=1;
     } else if(this.type === "Dungeon Molten Boss") {
         fill(0, 0, 0);
-        ellipse(this.x - cam.x, this.y - cam.y, this.size + 3, this.size + 3, 0);
-        fill(200, 150, 30);
-        ellipse(this.x - cam.x, this.y - cam.y, this.size, this.size, 0);
-        for(var i = 0; i < this.rocks.length; i+=1) {
-            fill(150, 50, 10);
-            ellipse(this.rocks[i][0] - cam.x, this.rocks[i][1] - cam.y, 13, 13, 0);
-        }
+        rect(7, 37, canvas.width - 14, 15);
+        textAlign("center");
+        text("Gabe leader of the Moltens", canvas.width/2, 25, 30)
+        fill(100, 0, 0);
+        rect(10, 40, canvas.width - 20, 9);
+        fill(255, 100, 0)
+        rect(10, 40, constrain((this.hp/this.maxHp), 0, 1) * (canvas.width - 20), 9);
     } else {
         textAlign("center");
         fill(0, 0, 0);
@@ -1008,6 +1032,13 @@ npc.prototype.update = function() {
             eD+=1;
         } else if(this.type == "Dungeon Molten Boss") {
             eD+=1;
+            for(var i = 0; i < this.rocks.length; i+=1) {
+                this.rocks[i][0] = lerp(this.rocks[i][0], this.rocksT[i][0], 0.02)
+                this.rocks[i][1] = lerp(this.rocks[i][1], this.rocksT[i][1], 0.02)
+            }
+            if(frameCount % 10 == 0) {
+                this.rocksT = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
+            }
         } else if(this.type == "Dungeon Yeti") {
             eD+=1;
         } else if(this.type == "Dungeon Snowman") {
@@ -1018,6 +1049,13 @@ npc.prototype.update = function() {
             eD+=1;
         } else if(this.type == "Dungeon Molten Monster") {
             eD+=1;
+            for(var i = 0; i < this.rocks.length; i+=1) {
+                this.rocks[i][0] = lerp(this.rocks[i][0], this.rocksT[i][0], 0.02)
+                this.rocks[i][1] = lerp(this.rocks[i][1], this.rocksT[i][1], 0.02)
+            }
+            if(frameCount % 10 == 0) {
+                this.rocksT = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
+            }
         }
     } else {
         if(this.type == "Slime Lv. 1") {
