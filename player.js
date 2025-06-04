@@ -194,7 +194,7 @@ Player.prototype.draw = function() {
     fill(200, 150, 30);
     rect(15, canvas.height - 65, (this.stamina/this.maxStamina) * 200, 25);
     fill(250, 200, 40);
-    rect(15, canvas.height - 100, (this.exp/(100 + (this.lvl * this.lvl)) * 200, 25);
+    rect(15, canvas.height - 100, (this.exp/(100 + (this.lvl * this.lvl))) * 200, 25);
     if(this.inventory[this.selectedInventory] === "Iron Sword") {
         strokeWeight(7);
         if(this.attacking) {
