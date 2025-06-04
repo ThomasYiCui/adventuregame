@@ -158,16 +158,16 @@ function loadDungeon(to) {
     break;
     case "Elf Dungeon":
       for(var i = 0; i < 10; i+=1) {
-          dNpcs.push(new npc(random(-2180, -1000), random(-50, 70), "Elf Warrior", "enemy"))
+          dNpcs.push(new npc(random(-2180, -1000), random(-50, 70), "Dungeon Elf Warrior", "enemy"))
       }
       for(var i = 0; i < 10; i+=1) {
-          dNpcs.push(new npc(random(-3200, -2000), random(-700, 700), "Elf", "enemy"))
+          dNpcs.push(new npc(random(-3200, -2000), random(-700, 700), "Dungeon Elf", "enemy"))
       }
       dNpcs.push(new npc(-2600, 0, "Dungeon Elf Boss", "enemy"))
     break;
     case "Molten Dungeon":
       for(var i = 0; i < 20; i+=1) {
-          dNpcs.push(new npc(random(-3200, -2000), random(-700, 700), "Molten Monster", "enemy"))
+          dNpcs.push(new npc(random(-3200, -2000), random(-700, 700), "Dungeon Molten Monster", "enemy"))
       }
       dNpcs.push(new npc(-2600, 0, "Dungeon Molten Boss", "enemy"))
     break;
@@ -185,9 +185,10 @@ function dungeon(x, y, color, to) {
   if(dist(x, y + 50, player.x, player.y) < 200) {
       textAlign("center")
       fill(0, 0, 0);
-      text("Spacebar to enter Desert Dungeon", canvas.width/2, canvas.height - 30, 30)
+      text("Spacebar to enter " + to + " Dungeon", canvas.width/2, canvas.height - 30, 30)
       if(keys[32]) {
           scene = to
+          console.log(to, x, y, player.x, player.y, dist(x, y + 50, player.x, player.y))
           player.x = 0;
           player.y = 0;
           dNpcs = [];
@@ -208,9 +209,9 @@ function draw() {
             
             dungeon(16550, 0, [205, 205, 245], "Snow Dungeon")
 
-            dungeon(0, -18550, [51, 102, 0], "Elf Dungeon")
+            dungeon(0, -19550, [51, 102, 0], "Elf Dungeon")
 
-            dungeon(0, 16550, [255, 102, 0], "Molten Dungeon")
+            dungeon(0, 17550, [255, 102, 0], "Molten Dungeon")
 
             fill(0, 0, 0);
             rect(-233 - cam.x, -647 - cam.y, 66, 556);
@@ -438,8 +439,8 @@ function draw() {
             text("Base", canvas.width/2 - cos(atan2(player.y - 15, player.x - 95)) * 400, canvas.height/2 - sin(atan2(player.y - 15, player.x - 195)) * 200, 15)
             text("Desert Dungeon", canvas.width/2 - cos(atan2(player.y - 0, player.x + 18550)) * 200, canvas.height/2 - sin(atan2(player.y - 0, player.x + 18550)) * 200 + 7.5, 15)
             text("Snow Dungeon", canvas.width/2 - cos(atan2(player.y - 0, player.x - 16550)) * 200, canvas.height/2 - sin(atan2(player.y - 0, player.x - 16550)) * 200 + 7.5, 15)
-            text("Molten Dungeon", canvas.width/2 - cos(atan2(player.y - 16550, player.x + 0)) * 200, canvas.height/2 - sin(atan2(player.y - 16550, player.x + 0)) * 200 + 7.5, 15)
-            text("Elf Dungeon", canvas.width/2 - cos(atan2(player.y + 18550, player.x + 0)) * 200, canvas.height/2 - sin(atan2(player.y + 18550, player.x + 0)) * 200 + 7.5, 15)
+            text("Molten Dungeon", canvas.width/2 - cos(atan2(player.y - 17550, player.x + 0)) * 200, canvas.height/2 - sin(atan2(player.y - 17550, player.x + 0)) * 200 + 7.5, 15)
+            text("Elf Dungeon", canvas.width/2 - cos(atan2(player.y + 19550, player.x + 0)) * 200, canvas.height/2 - sin(atan2(player.y + 19550, player.x + 0)) * 200 + 7.5, 15)
         break;
         case "shop":
             button(20, 150, canvas.width/2 - 35, 50, [102, 51, 0], function() {
@@ -1050,8 +1051,8 @@ function draw() {
                 y: lerp(cam.y, player.y - canvas.height/2, 0.04),
             }
             if(eD <= 0) {
-                player.x = -18550;
-                player.y = 0;
+                player.x = 0;
+                player.y = -19550;
                 popUps.push(new popUp("Doungen Cleared [+250000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
                 changeGems(250000);
                 player.exp+=15000;
@@ -1156,11 +1157,11 @@ function draw() {
                 y: lerp(cam.y, player.y - canvas.height/2, 0.04),
             }
             if(eD <= 0) {
-                player.x = -18550;
-                player.y = 0;
-                popUps.push(new popUp("Doungen Cleared [+50000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
-                changeGems(50000);
-                player.exp+=10000;
+                player.x = 0;
+                player.y = -17550;
+                popUps.push(new popUp("Doungen Cleared [+200000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
+                changeGems(200000);
+                player.exp+=30000;
                 scene = "adventure";
                 grass = [];
                 for(var i = 0; i < 10; i+=1) {
