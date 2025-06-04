@@ -611,6 +611,7 @@ function draw() {
                         popUps.push(new popUp("Purchase Sucsessful", canvas.width/2 - random(-canvas.width/3, canvas.width/3), canvas.height/2 + random(-canvas.height/3, canvas.height/3), 50, 300))
                         player.weponDamage = 5;
                         player.weponCollision = [30, 45, 60, 75, 90, 105, 120];
+                        player.weponKnockback = 1.2;
                         player.wepon = "Long Sword"
                         changeGems(-500)
                         player.inventory[0] = "Long Sword"
@@ -624,6 +625,7 @@ function draw() {
                     player.weponDamage = 5;
                     player.weponCollision = [30, 45, 60, 75, 90, 105, 120];
                     player.wepon = "Long Sword"
+                    player.weponKnockback = 1.2;
                     player.inventory[0] = "Long Sword"
                     buy.play();
                 }, ["Long Sword [OWNED]", 20]);
@@ -636,6 +638,7 @@ function draw() {
                         player.weponDamage = 7;
                         player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135];
                         player.wepon = "Penatrator"
+                        player.weponKnockback = 1.3;
                         player.inventory[0] = "Penatrator"
                         buy.play();
                         owns[1] = "1";
@@ -647,6 +650,7 @@ function draw() {
                     player.weponDamage = 7;
                     player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135];
                     player.wepon = "Penatrator"
+                    player.weponKnockback = 1.3;
                     player.inventory[0] = "Penatrator"
                     buy.play();
                 }, ["Penatrator [OWNED]", 20]);
@@ -659,6 +663,7 @@ function draw() {
                         player.weponDamage = 15;
                         player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180];
                         player.wepon = "Dagmor"
+                        player.weponKnockback = 1.5;
                         player.inventory[0] = "Dagmor"
                         buy.play();
                         owns[8] = "1";
@@ -670,6 +675,7 @@ function draw() {
                     player.weponDamage = 15;
                     player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180];
                     player.wepon = "Dagmor"
+                    player.weponKnockback = 1.5;
                     player.inventory[0] = "Dagmor"
                     buy.play();
                 }, ["Dagmor [OWNED]", 20]);
@@ -682,6 +688,7 @@ function draw() {
                         player.weponDamage = 50;
                         player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210];
                         player.wepon = "Dragon Slayer"
+                        player.weponKnockback = 2;
                         player.inventory[0] = "Dragon Slayer"
                         buy.play();
                         owns[9] = "1";
@@ -693,6 +700,7 @@ function draw() {
                     player.weponDamage = 50;
                     player.weponCollision = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210];
                     player.wepon = "Dragon Slayer"
+                    player.weponKnockback = 2;
                     player.inventory[0] = "Dragon Slayer"
                     buy.play();
                 }, ["Dragon Slayer [OWNED]", 20]);
