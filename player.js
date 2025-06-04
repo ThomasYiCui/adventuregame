@@ -67,6 +67,7 @@ function Player() {
     this.wepon = localStorage.getItem("wepon") || "Iron Sword"
     this.weponCollision = localStorage.getItem("weponCollision") || "30,45,60,75";
     this.weponCollision = this.weponCollision.split(",");
+    this.weponKnockback = 1;
     this.inventory = localStorage.getItem("inventory") || "Iron Sword,none,none,none"
     this.inventory = this.inventory.split(",")
     this.inventory[0] = this.inventory[0].replace("[", "");
