@@ -777,8 +777,8 @@ npc.prototype.update = function() {
                 var r = atan2(this.y - player.y, this.x - player.x);
                 this.hp-=player.weponDamage * (player.strength/100);
                 this.playerHit = 100;
-                this.aX = cos(r) * 4;
-                this.aY = sin(r) * 4;
+                this.aX = cos(r) * player.weponKnockback;
+                this.aY = sin(r) * player.weponKnockback;
                 break;
             }
         }
