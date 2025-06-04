@@ -1,32 +1,32 @@
 function spawn() {
   if(frameCount % 10 === 0) {
     //npcs.push(new npc(random(-4500, -3600), random(-1200, 1200), "Rock Person Lv. 1", "enemy"));
-    if(slimes < 20) {
+    if(slimes < 10) {
         npcs.push(new npc(random(-2000, -400), random(-750, 750), "Slime Lv. 1", "enemy"));
     }
-    if(Goblins < 30) {
+    if(Goblins < 10) {
         npcs.push(new npc(random(-5300, -4400), random(-500, 500), "Goblin", "enemy"));
         //npcs.push(new npc(random(-4000, -4000), random(-100, 100), "Goblin", "enemy"));
     }
-    if(ghosts < 10) {
+    if(ghosts < 5) {
         npcs.push(new npc(random(3000, 9600), random(-1500, 1500), "ghost", "enemy"));
     }
-    if(rockPeople < 3) {
+    if(rockPeople < 2) {
         npcs.push(new npc(random(-15500, -9600), random(-1500, 1500), "Rock Person Lv. 1", "enemy"));
     }
-    if(orcs < 10) {
+    if(orcs < 6) {
         npcs.push(new npc(random(-14500, -8600), random(-500, 500), "Orc", "enemy"));
     }
     if(yetis < 5) {
         npcs.push(new npc(random(2500, 15600), random(-1500, 1500), "Yeti", "enemy"));
     }
-    if(snowmen < 15) {
+    if(snowmen < 7) {
         npcs.push(new npc(random(2500, 15600), random(-1500, 1500), "Snowman", "enemy"));
     }
-    if(elves < 10) {
+    if(elves < 8) {
         npcs.push(new npc(random(-2000, 2000), random(-10000, -11000), "Elf", "enemy"))
     }
-    if(swordElves < 10) {
+    if(swordElves < 7) {
         npcs.push(new npc(random(-2000, 2000), random(-10000, -11000), "Elf Warrior", "enemy"))
     }
     if(moltenMonsters < 10) {
