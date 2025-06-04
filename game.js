@@ -947,9 +947,9 @@ function draw() {
             if(eD <= 0) {
                 player.x = 16550;
                 player.y = 0;
-                popUps.push(new popUp("Doungen Cleared [+1500000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
-                changeGems(1500000);
-                player.exp+=20000;
+                popUps.push(new popUp("Doungen Cleared [+150000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
+                changeGems(150000);
+                player.exp+=15000;
                 grass = [];
                 for(var i = 0; i < 10; i+=1) {
                     grass.push([random(0, canvas.width) + cam.x, random(0, canvas.height) + cam.y])
