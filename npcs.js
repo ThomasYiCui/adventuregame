@@ -902,6 +902,10 @@ npc.prototype.update = function() {
             allySlimes+=1
         } else if(this.type == "Slime Lv. 3") {
             allySlimes+=1
+        } else if(this.type == "Slime Lv. 4") {
+            allySlimes+=1;
+        } else if(this.type == "Slime Lv. 5") {
+            allySlimes+=1
         } else if(this.type == "Guard") {
             guards+=1;
         }
