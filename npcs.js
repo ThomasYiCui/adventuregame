@@ -427,7 +427,7 @@ function npc(x, y, type, team) {
             this.rocksT = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
         break;
         case "Dungeon Elf":
-            this.hp = 280000;
+            this.hp = 2800000;
             this.maxHp = this.hp;
             this.dmgWay = "shoot";
             this.dmg = "elf arrow";
@@ -444,7 +444,7 @@ function npc(x, y, type, team) {
             this.accruacy = 0.01;
         break;
         case "Dungeon Elf Warrior":
-            this.hp = 200000;
+            this.hp = 2000000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 1000000;
@@ -1030,6 +1030,7 @@ npc.prototype.update = function() {
             eD+=1;
         } else if(this.type == "Dungeon Molten Boss") {
             eD+=1;
+            /**
             for(var i = 0; i < this.rocks.length; i+=1) {
                 if(this.rocks[i]) {
                     this.rocks[i][0] = lerp(this.rocks[i][0], this.rocksT[i][0], 0.02)
@@ -1039,6 +1040,7 @@ npc.prototype.update = function() {
             if(frameCount % 10 == 0) {
                 this.rocksT = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
             }
+            */
         } else if(this.type == "Dungeon Yeti") {
             eD+=1;
         } else if(this.type == "Dungeon Snowman") {
@@ -1049,6 +1051,7 @@ npc.prototype.update = function() {
             eD+=1;
         } else if(this.type == "Dungeon Molten Monster") {
             eD+=1;
+            /**
             for(var i = 0; i < this.rocks.length; i+=1) {
                 if(this.rocks[i]) {
                     this.rocks[i][0] = lerp(this.rocks[i][0], this.rocksT[i][0], 0.02)
@@ -1058,6 +1061,7 @@ npc.prototype.update = function() {
             if(frameCount % 10 == 0) {
                 this.rocksT = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
             }
+            */
         }
     } else {
         if(this.type == "Slime Lv. 1") {
