@@ -156,6 +156,21 @@ function loadDungeon(to) {
       }
       dNpcs.push(new npc(-2600, 0, "Dungeon Yeti Boss", "enemy"))
     break;
+    case "Elf Dungeon":
+      for(var i = 0; i < 10; i+=1) {
+          dNpcs.push(new npc(random(-2180, -1000), random(-50, 70), "Elf Warrior", "enemy"))
+      }
+      for(var i = 0; i < 10; i+=1) {
+          dNpcs.push(new npc(random(-3200, -2000), random(-700, 700), "Elf", "enemy"))
+      }
+      dNpcs.push(new npc(-2600, 0, "Dungeon Elf Boss", "enemy"))
+    break;
+    case "Molten Dungeon":
+      for(var i = 0; i < 20; i+=1) {
+          dNpcs.push(new npc(random(-3200, -2000), random(-700, 700), "Molten Monster", "enemy"))
+      }
+      dNpcs.push(new npc(-2600, 0, "Dungeon Molten Boss", "enemy"))
+    break;
   }
 }
 function dungeon(x, y, color, to) {
