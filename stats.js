@@ -325,7 +325,7 @@ var projectileStats = {
     "Blue": {
         size: 200,
         dmg: 5,
-        range: 1000,
+        range: 2000,
         decayRate: 0,
         spd: 5,
         cost: 500000,
