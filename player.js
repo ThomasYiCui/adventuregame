@@ -337,7 +337,7 @@ Player.prototype.draw = function() {
         eEllipse(player.x + cos(player.r) * 30 - cam.x, player.y + sin(player.r) * 30 - cam.y, 5, 5, 0);
         if(clicked) {
             if(this.mana >= 250) {
-                if(allySlimes < 4) {
+                if(allySlimes < 6) {
                     this.mana-=250;
                     if(scene == "adventure") {
                         for(var i = 0; i < 1; i+=1) {
@@ -361,7 +361,7 @@ Player.prototype.draw = function() {
         eEllipse(player.x + cos(player.r) * 32.5 - cam.x, player.y + sin(player.r) * 32.5 - cam.y, 7.5, 7.5, 0);
         if(clicked) {
             if(this.mana >= 500) {
-                if(allySlimes < 10) {
+                if(allySlimes < 12) {
                     this.mana-=500;
                     if(scene == "adventure") {
                         for(var i = 0; i < 3; i+=1) {
@@ -385,7 +385,7 @@ Player.prototype.draw = function() {
         eEllipse(player.x + cos(player.r) * 32.5 - cam.x, player.y + sin(player.r) * 32.5 - cam.y, 7.5, 7.5, 0);
         if(clicked) {
             if(this.mana >= 1000) {
-                if(allySlimes < 15) {
+                if(allySlimes < 10) {
                     this.mana-=1000;
                     if(scene == "adventure") {
                         for(var i = 0; i < 3; i+=1) {
@@ -417,7 +417,7 @@ Player.prototype.draw = function() {
         eEllipse(player.x + cos(player.r) * 32.5 - cam.x, player.y + sin(player.r) * 32.5 - cam.y, 7.5, 7.5, 0);
         if(clicked) {
             if(this.mana >= 4000) {
-                if(allySlimes < 25) {
+                if(allySlimes < 15) {
                     this.mana-=4000;
                     if(scene == "adventure") {
                         for(var i = 0; i < 12; i+=1) {
@@ -447,7 +447,7 @@ Player.prototype.draw = function() {
         eEllipse(player.x + cos(player.r) * 32.5 - cam.x, player.y + sin(player.r) * 32.5 - cam.y, 5, 5, 0);
         if(clicked) {
             if(this.mana >= 8000) {
-                if(allySlimes < 50) {
+                if(allySlimes < 12) {
                     this.mana-=8000;
                     if(scene == "adventure") {
                         for(var i = 0; i < 6; i+=1) {
@@ -471,7 +471,7 @@ Player.prototype.draw = function() {
         eEllipse(player.x + cos(player.r) * 37.5 - cam.x, player.y + sin(player.r) * 37.5 - cam.y, 15, 15, 0);
         if(clicked) {
             if(this.mana >= 16000) {
-                if(allySlimes < 25) {
+                if(allySlimes < 5) {
                     this.mana-=16000;
                     if(scene == "adventure") {
                         npcs.push(new npc(player.x + random(-100, 100), player.y + random(-100, 100), "Slime Lv. 5", "ally"));
