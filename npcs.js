@@ -447,7 +447,7 @@ function npc(x, y, type, team) {
             this.hp = 200000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 230000;
+            this.dmg = 1000000;
             this.size = 30;
             this.reload = 140;
             this.spd = 2;
@@ -464,7 +464,7 @@ function npc(x, y, type, team) {
             this.hp = 3000000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 4000000;
+            this.dmg = 40000000;
             this.size = 40;
             this.reload = 120;
             this.spd = 3;
@@ -480,10 +480,10 @@ function npc(x, y, type, team) {
             this.rocksT = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
         break;
         case "Dungeon Elf Boss":
-            this.hp = 10000000;
+            this.hp = 30000000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 80000;
+            this.dmg = 8000000;
             this.size = 60;
             this.reload = 50;
             this.spd = 5;
@@ -497,7 +497,7 @@ function npc(x, y, type, team) {
             this.accruacy = 0.01;
         break;
         case "Dungeon Molten Boss":
-            this.hp = 20000000;
+            this.hp = 80000000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
             this.dmg = 16000000;
