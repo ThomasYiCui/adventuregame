@@ -408,10 +408,10 @@ function npc(x, y, type, team) {
             this.accruacy = 0.01;
         break;
         case "Molten Monster":
-            this.hp = 1500000;
+            this.hp = 7000000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 2000000;
+            this.dmg = 200000;
             this.size = 40;
             this.reload = 120;
             this.spd = 3;
@@ -427,12 +427,12 @@ function npc(x, y, type, team) {
             this.rocksT = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
         break;
         case "Dungeon Elf":
-            this.hp = 2800000;
+            this.hp = 1000000;
             this.maxHp = this.hp;
             this.dmgWay = "shoot";
             this.dmg = "elf arrow";
             this.size = 35;
-            this.reload = 60;
+            this.reload = 1000;
             this.spd = 2;
             this.range = 1800;
             this.atkRange = 150;
@@ -444,10 +444,10 @@ function npc(x, y, type, team) {
             this.accruacy = 0.01;
         break;
         case "Dungeon Elf Warrior":
-            this.hp = 2000000;
+            this.hp = 1500000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 1000000;
+            this.dmg = 500000;
             this.size = 30;
             this.reload = 140;
             this.spd = 2;
@@ -461,10 +461,10 @@ function npc(x, y, type, team) {
             this.accruacy = 0.01;
         break;
         case "Dungeon Molten Monster":
-            this.hp = 3000000;
+            this.hp = 1500000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 10000000;
+            this.dmg = 5000000;
             this.size = 40;
             this.reload = 120;
             this.spd = 3;
@@ -480,10 +480,10 @@ function npc(x, y, type, team) {
             this.rocksT = [[this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)], [this.x + random(-100, 100), this.y + random(-100, 100)]]
         break;
         case "Dungeon Elf Boss":
-            this.hp = 30000000;
+            this.hp = 15000000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 8000000;
+            this.dmg = 800000;
             this.size = 60;
             this.reload = 50;
             this.spd = 4;
@@ -497,10 +497,10 @@ function npc(x, y, type, team) {
             this.accruacy = 0.01;
         break;
         case "Dungeon Molten Boss":
-            this.hp = 80000000;
+            this.hp = 30000000;
             this.maxHp = this.hp;
             this.dmgWay = "hit";
-            this.dmg = 160000000;
+            this.dmg = 16000000;
             this.size = 60;
             this.reload = 200;
             this.spd = 4;
