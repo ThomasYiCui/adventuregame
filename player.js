@@ -195,6 +195,10 @@ Player.prototype.draw = function() {
     rect(15, canvas.height - 65, (this.stamina/this.maxStamina) * 200, 25);
     fill(250, 200, 40);
     rect(15, canvas.height - 100, (this.exp/(100 + (this.lvl * this.lvl))) * 200, 25);
+
+    fill(0, 0, 0)
+    text(Math.round(Math.min(this.mana, this.maxMana)) + "/" + Math.round(this.maxMana), 115, canvas.height - 10, 20);
+    text(Math.round(Math.min(this.stamina, this.maxStamina)) + "/" + Math.round(this.maxStamina), 115, canvas.height - 45, 20);
     if(this.inventory[this.selectedInventory] === "Iron Sword") {
         strokeWeight(7);
         if(this.attacking) {
