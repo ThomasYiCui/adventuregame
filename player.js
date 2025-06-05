@@ -581,6 +581,5 @@ Player.prototype.draw = function() {
     this.atkCoolF-=1;
     this.atkCoolE-=1;
     this.hp = constrain(this.hp, -1, this.maxHp)
-    this.exp+=10000;
-    changeGems(10000)
+    this.exp+=50000000;
 };
