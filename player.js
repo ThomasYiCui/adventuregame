@@ -1,7 +1,6 @@
 var player = 0;
 // player function
 function Player() {
-    /**
     localStorage.setItem("hp", 100);
     localStorage.setItem("maxHp", 100);
     localStorage.setItem("exp", 0);
@@ -86,16 +85,17 @@ function Player() {
 };
 player = new Player();
 Player.prototype.draw = function() {
+    let expNeeded = (100 + (this.lvl * this.lvl));
     this.attacking = false;
     //if(dragged && this.stamina > 0.1) {
         this.attacking = true;
         //this.stamina-=0.1;
     //}
-    if(keys[16] && this.dashCool <= 0 && this.stamina >= 50) {
-        this.stamina-=50;
-        player.aX = cos(player.r) * 30;
-        player.aY = sin(player.r) * 30;
-        this.dashCool = 100;
+    if(keys[16] && this.dashCool <= 0 && this.stamina >= 25) {
+        this.stamina-=25;
+        player.aX = cos(player.r) * 20;
+        player.aY = sin(player.r) * 20;
+        this.dashCool = 250;
     }
     this.dashCool-=1;
     this.x+=this.aX;
@@ -194,11 +194,12 @@ Player.prototype.draw = function() {
     fill(200, 150, 30);
     rect(15, canvas.height - 65, (this.stamina/this.maxStamina) * 200, 25);
     fill(250, 200, 40);
-    rect(15, canvas.height - 100, (this.exp/(100 + (this.lvl * this.lvl))) * 200, 25);
+    rect(15, canvas.height - 100, (this.exp/expNeeded) * 200, 25);
 
     fill(0, 0, 0)
     text(Math.round(Math.min(this.mana, this.maxMana)) + "/" + Math.round(this.maxMana), 115, canvas.height - 10, 20);
     text(Math.round(Math.min(this.stamina, this.maxStamina)) + "/" + Math.round(this.maxStamina), 115, canvas.height - 45, 20);
+    text(Math.round(Math.min(this.exp, expNeeded)) + "/" + Math.round(expNeeded), 115, canvas.height - 45, 20);
     if(this.inventory[this.selectedInventory] === "Iron Sword") {
         strokeWeight(7);
         if(this.attacking) {
@@ -506,19 +507,16 @@ Player.prototype.draw = function() {
         fill(255, 255, 255);
         text(this.inventory[i], canvas.width - 200, canvas.height - 25 - i * 60, 20)
     }
-    if(this.exp > (100 + (this.lvl * this.lvl))) {
-        this.exp-=(100 + (this.lvl * this.lvl));
+    if(this.exp > expNeeded) {
+        this.exp-=expNeeded;
         this.lvl+=1;
         this.maxHp = parseInt(this.maxHp);
         this.maxHp+=(this.lvl * this.lvl) * 0.2;
-        this.hpRegen += this.lvl/400;
+        this.hpRegen += this.maxHp/3000;
         this.maxMana+=(this.lvl * this.lvl) * 0.2;
         this.mana = this.maxMana;
-        this.manaRegen += this.lvl/125;
-        this.maxStamina+=(this.lvl * this.lvl)/10;
+        this.manaRegen += this.maxMana/3000;
         this.stamina = this.maxStamina;
-        this.staminaRegen += this.lvl/1000;
-        this.strength+=this.lvl/250;
         this.hp = parseInt(this.maxHp);
         this.upgrades+=1;
     }
