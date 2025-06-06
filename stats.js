@@ -335,7 +335,7 @@ var projectileStats = {
     },
     "Red": {
         size: 10,
-        dmg: 50,
+        dmg: 300,
         range: 350,
         decayRate: 0,
         spd: 2,
@@ -346,11 +346,11 @@ var projectileStats = {
     },
     "Purple": {
         size: 100,
-        dmg: 20000,
+        dmg: 40000,
         range: 300,
         decayRate: 0,
         spd: 5,
-        cost: 7000000,
+        cost: 1000000,
         knockback: 0,
         effect: [],
         reload: 600,
