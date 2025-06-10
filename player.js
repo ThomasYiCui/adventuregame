@@ -1,6 +1,7 @@
 var player = 0;
 // player function
 function Player() {
+    /**
     localStorage.setItem("hp", 100);
     localStorage.setItem("maxHp", 100);
     localStorage.setItem("exp", 0);
