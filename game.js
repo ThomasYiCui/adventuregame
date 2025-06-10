@@ -95,21 +95,19 @@ function wall(x, y, w, h) {
   collideRect(x, y, w, h, dNpcs, true);
   collideRect(x, y, w, h, npcs, true)
 }
-function tpingblock(x, y, w, h, t, toX, toY) {
-  if(t.x + t.size > x && t.x - t.size < x + w && t.y + t.size > y && t.y - t.size < y + h) {
-      t.x = toX;
-      t.y = toY;
+function tpingblock(x, y, w, h, t) {
+  if(t.x > x && t.x < x + w && t.y > y && t.y < y + h) {
+      t.inDungeon = true;
   }
 }
-function tpblock(x, y, w, h, toX, toY) {
-  fill(0, 0, 0)
-  rect(x, y, w, h)
-  tpingblock(x, y, w, h, player, toX, toY)
+function tpblock(x, y, w, h) {
+  //fill(0, 0, 0)
+  tpingblock(x, y, w, h, player)
   for(let i = 0; i < dNpcs.length; i++) {
-    tpingblock(x, y, w, h, dNpcs[i], toX, toY)
+    tpingblock(x, y, w, h, dNpcs[i])
   }
   for(let i = 0; i < npcs.length; i++) {
-    tpingblock(x, y, w, h, npcs[i], toX, toY)
+    tpingblock(x, y, w, h, npcs[i])
   }
 }
 function building(x, y) {
@@ -136,43 +134,6 @@ function building(x, y) {
   fill(0, 0, 200);
   ellipse(x + 50 - cam.x, y + 190 - cam.y, 20, 20, 0);
 }
-function loadDungeon(to) {
-  switch(to) {
-    case "Desert Dungeon":
-      for(var i = 0; i < 5; i+=1) {
-          dNpcs.push(new npc(random(-2180, -1000), random(-50, 70), "Dungeon Goblin", "enemy"))
-      }
-      for(var i = 0; i < 15; i+=1) {
-          dNpcs.push(new npc(random(-3200, -2000), random(-700, 700), "Dungeon Goblin", "enemy"))
-      }
-      dNpcs.push(new npc(-2600, 0, "Dungeon Goblin Boss", "enemy"))
-    break;
-    case "Snow Dungeon":
-      for(var i = 0; i < 5; i+=1) {
-          dNpcs.push(new npc(random(-3200, -2000), random(-700, 700), "Dungeon Yeti", "enemy"))
-      }
-      for(var i = 0; i < 10; i+=1) {
-          dNpcs.push(new npc(random(-3200, -2000), random(-700, 700), "Dungeon Snowman", "enemy"))
-      }
-      dNpcs.push(new npc(-2600, 0, "Dungeon Yeti Boss", "enemy"))
-    break;
-    case "Elf Dungeon":
-      for(var i = 0; i < 10; i+=1) {
-          dNpcs.push(new npc(random(-2180, -1000), random(-50, 70), "Dungeon Elf Warrior", "enemy"))
-      }
-      for(var i = 0; i < 10; i+=1) {
-          dNpcs.push(new npc(random(-3200, -2000), random(-700, 700), "Dungeon Elf", "enemy"))
-      }
-      dNpcs.push(new npc(-2600, 0, "Dungeon Elf Boss", "enemy"))
-    break;
-    case "Molten Dungeon":
-      for(var i = 0; i < 20; i+=1) {
-          dNpcs.push(new npc(random(-3200, -2000), random(-700, 700), "Dungeon Molten Monster", "enemy"))
-      }
-      dNpcs.push(new npc(-2600, 0, "Dungeon Molten Boss", "enemy"))
-    break;
-  }
-}
 function dungeon(x, y, color, to) {
   fill(color[0], color[1], color[2])
   arc(x - cam.x, y - cam.y, 150, 150, -Math.PI, 0);
@@ -185,10 +146,9 @@ function dungeon(x, y, color, to) {
   if(dist(x, y + 50, player.x, player.y) < 200) {
       textAlign("center")
       fill(0, 0, 0);
-      text("Spacebar to enter " + to + " Dungeon", canvas.width/2, canvas.height - 30, 30)
+      text("Spacebar to enter Desert Dungeon", canvas.width/2, canvas.height - 30, 30)
       if(keys[32]) {
           scene = to
-          console.log(to, x, y, player.x, player.y, dist(x, y + 50, player.x, player.y))
           player.x = 0;
           player.y = 0;
           dNpcs = [];
@@ -196,6 +156,322 @@ function dungeon(x, y, color, to) {
       }
   } 
 }
+function runDungeon() {
+  textAlign("center");
+  for(var i = 0; i < dNpcs.length; i+=1) {
+      if(dNpcs[i].x - cam.x >= -dNpcs[i].size && dNpcs[i].y - cam.y >= -dNpcs[i].size && dNpcs[i].x - cam.x <= canvas.width + dNpcs[i].size && dNpcs[i].y - cam.y <= canvas.height + dNpcs[i].size) {
+          dNpcs[i].draw();
+      }
+      dNpcs[i].update();
+      for(var j = 0; j < dNpcs.length; j+=1) {
+          if(i !== j) {
+              dNpcs[i].collide(dNpcs[j], i, j)
+          }
+      }
+      if(dNpcs[i].hp <= 0) {
+          changeGems(dNpcs[i].gems);
+          if(dNpcs[i].team === "enemy") {
+              player.exp+=dNpcs[i].exp;
+          }
+          dNpcs.splice(i, 1);
+      }
+      if(!dNpcs[i].inDungeon) {
+        dNpcs[i].x = dNpcs[i].spawnX;
+        dNpcs[i].y = dNpcs[i].spawnY;
+      }
+      dNpcs[i].inDungeon = false;
+  }
+  for(var i = 0; i < projectiles.length; i+=1) {
+      projectiles[i].draw();
+      projectiles[i].update();
+      for(var j = 0; j < dNpcs.length; j+=1) {
+          projectiles[i].collide(dNpcs[j])
+      }
+      projectiles[i].collide(player);
+      if(projectiles[i].life <= 0) {
+          projectiles.splice(i, 1)
+      }
+  }
+  textAlign("center");
+  for(var i = 0; i < popUps.length; i+=1) {
+      popUps[i].draw();
+      popUps[i].update();
+      if(popUps[i].lifeTime <= 0) {
+          popUps.splice(i, 1);
+      }
+  }
+  player.draw();
+  cam = {
+      x: lerp(cam.x, player.x - canvas.width/2, 0.04),
+      y: lerp(cam.y, player.y - canvas.height/2, 0.04),
+  }
+  if(eD <= 0) {
+      player.x = -18550;
+      player.y = 0;
+      popUps.push(new popUp("Doungen Cleared [+50000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
+      changeGems(50000);
+      player.exp+=1000;
+      scene = "adventure";
+      grass = [];
+      for(var i = 0; i < 10; i+=1) {
+          grass.push([random(0, canvas.width) + cam.x, random(0, canvas.height) + cam.y])
+      }
+      if(quest[0] == "C" && quest[1] == "l" && quest[6] == "3" && quest[8] == "D" && quest[9] == "o") {
+          doungensCleared+=1;
+          quest = "Clear 3 Doungens: " + doungensCleared + "/" + "3"
+          if(doungensCleared >= 3) {
+              popUps.push(new popUp("Quest Complete [+200000 Gems]", canvas.width/2 - random(-canvas.width/6, canvas.width/6), canvas.height/2 + random(-canvas.height/6, canvas.height/6), 50, 300));
+              changeGems(200000);
+              quest = "None";
+          }
+      }
+  }
+  if(player.hp <= 0) {
+      player.x = 200;
+      player.y = 0;
+      player.hp = player.maxHp;
+      scene = "adventure"
+      grass = [];
+      for(var i = 0; i < 10; i+=1) {
+          grass.push([random(0, canvas.width) + cam.x, random(0, canvas.height) + cam.y])
+      }
+  }
+}
+function room(x, y, w, h, exit) {
+  tpblock(x, y, w, h)
+  if(exit[0]) {
+    wall(x - 100, y - 100, w/2, 100);
+    wall(x + w/2 + 100, y - 100, w/2, 100);
+    tpblock(x + w/2 - 100, y - 100, 200, 100)
+  } else {
+    wall(x - 100, y - 100, w + 200, 100);
+  }
+  if(exit[1]) {
+    wall(x - 100, y, 100, h/2 - 100);
+    wall(x - 100, y + h/2 + 100, 100, h/2 - 100);
+    tpblock(x - 100, y + h/2 - 100, 100, 200)
+  } else {
+    wall(x - 100, y, 100, h)
+  }
+  if(exit[2]) {
+    wall(x + w, y, 100, h/2 - 100);
+    wall(x + w, y + h/2 + 100, 100, h/2);
+    tpblock(x + w, y + h/2 - 100, 100, 200)
+  } else {
+    wall(x + w, y, 100, h);
+  }
+  if(exit[3]) {
+    wall(x - 100, y + h, w/2, 100);
+    wall(x + w/2 + 100, y + h, w/2 - 100, 100);
+    tpblock(x + w/2 + 100, y + h, 200, 100)
+  } else {
+    wall(x - 100, y + h, w + 200, 100);
+  }
+}
+// top
+// left
+// right
+// bottom
+let layouts = {
+  "Desert Dungeon": [
+    [0, 1, 1, 3, 2, 3, -1],
+    [3, 3, 3, 2, 2, 2, -1]
+  ],
+  "Snow Dungeon": [
+    [0, 1, 1, 3, 2, 3, -1],
+    [3, 3, 3, 2, 2, 2, -1]
+  ],
+};
+let layout = [0, 1, 1, 3, 2, 3, -1]
+function spawnDungeonNpc(x, y, t, team, i) {
+  let newNpc = new npc(x, y, t, team);
+  newNpc.spawnX = x;
+  newNpc.spawnY = y;
+  newNpc.spawnRoom = i
+  dNpcs.push(newNpc)
+}
+function loadDungeon(to) {
+  let spawnX = 0;
+  let spawnY = 0;
+  layout = layouts[to][round(random(0, layouts[to].length - 1))]
+  switch(to) {
+    case "Desert Dungeon":
+      for(let i = 0; i < layout.length; i++) {
+        if(layout[i] === 0) {
+          spawnY-=800;
+        } else if(layout[i] === 1) {
+          spawnX-=800;
+        } else if(layout[i] === 2) {
+          spawnX+=800;
+        } else if(layout[i] === 3) {
+          spawnY+=800;
+        }
+        if(i === 0) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Goblin", "enemy", i)
+        } else if(i === 1) {
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY + 50, "Dungeon Goblin", "enemy")
+        } else if(i === 2) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY + 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Goblin", "enemy", i)
+        } else if(i === 3) {
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY + 50, "Dungeon Goblin", "enemy", i)
+        } else if(i === 4) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY + 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Goblin", "enemy", i)
+        } else if(i === 5) {
+          spawnDungeonNpc(spawnX + 100, spawnY + 100, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX - 100, spawnY - 100, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX - 100, spawnY + 100, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Goblin", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY, "Dungeon Goblin Boss", "enemy", i)
+        }
+      }
+    break;
+    case "Snow Dungeon":
+      let spawnX = 0;
+      let spawnY = -0;
+      for(let i = 0; i < layout.length; i++) {
+        if(layout[i] === 0) {
+          spawnY-=800;
+        } else if(layout[i] === 1) {
+          spawnX-=800;
+        } else if(layout[i] === 2) {
+          spawnX+=800;
+        } else if(layout[i] === 3) {
+          spawnY+=800;
+        }
+        if(i === 0) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Yeti", "enemy", i)
+        } else if(i === 1) {
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY + 50, "Dungeon Snowman", "enemy")
+        } else if(i === 2) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY + 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Yeti", "enemy", i)
+        } else if(i === 3) {
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Snowman", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Snowman", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY + 50, "Dungeon Snowman", "enemy", i)
+        } else if(i === 4) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY + 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY, "Dungeon Snowman", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY, "Dungeon Snowman", "enemy", i)
+        } else if(i === 5) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY + 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Yeti", "enemy", i)
+          spawnDungeonNpc(spawnX + 100, spawnY + 100, "Dungeon Snowman", "enemy", i)
+          spawnDungeonNpc(spawnX - 100, spawnY - 100, "Dungeon Snowman", "enemy", i)
+          spawnDungeonNpc(spawnX - 100, spawnY + 100, "Dungeon Snowman", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Snowman", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY, "Dungeon Yeti Boss", "enemy", i)
+        }
+      }
+    break;
+  }
+}
+let loadingDungeon = false;
+function oppositeDir(dir) {
+  if(dir === 0) {
+    return 3;
+  }
+  if(dir === 1) {
+    return 2;
+  }
+  if(dir === 2) {
+    return 1;
+  }
+  if(dir === 3) {
+    return 0;
+  }
+}
+function desertDungeon() {
+  fill(60, 40, 40);
+  rect(0, 0, canvas.width, canvas.height);
+  fill(100, 60, 60);
+  let x = -400;
+  let y = -400;
+  let dir = layout[0];
+  let pastDir = layout[0];
+  for(let i = 0; i < layout.length; i++) {
+    roomExits = [false, false, false, false];
+    dir = layout[i]
+    pastDir = oppositeDir(layout[i - 1])
+    roomExits[dir] = true;
+    roomExits[pastDir] = true;
+    for(let j = 0; j < dNpcs.length; j++) {
+      if(dNpcs[j].spawnRoom + 1 === i && i > 0) {
+        roomExits[dir] = false;
+      }
+    }
+    room(x, y, 800, 800, roomExits)
+    if(dir === 0) {
+      y-=800;
+    } else if(dir === 1) {
+      x-=800;
+    } else if(dir === 2) {
+      x+=800;
+    } else if(dir === 3) {
+      y+=800;
+    }
+  }
+  //room(-1200, -400, 800, 800, [false, true, false, true])
+  runDungeon();
+}
+function snowDungeon() {
+  fill(60, 40, 40);
+  rect(0, 0, canvas.width, canvas.height);
+  fill(100, 60, 60);
+  let x = -400;
+  let y = -400;
+  let dir = layout[0];
+  let pastDir = layout[0];
+  for(let i = 0; i < layout.length; i++) {
+    roomExits = [false, false, false, false];
+    dir = layout[i]
+    pastDir = oppositeDir(layout[i - 1])
+    roomExits[dir] = true;
+    roomExits[pastDir] = true;
+    for(let j = 0; j < dNpcs.length; j++) {
+      if(dNpcs[j].spawnRoom + 1 === i && i > 0) {
+        roomExits[dir] = false;
+      }
+    }
+    room(x, y, 800, 800, roomExits)
+    if(dir === 0) {
+      y-=800;
+    } else if(dir === 1) {
+      x-=800;
+    } else if(dir === 2) {
+      x+=800;
+    } else if(dir === 3) {
+      y+=800;
+    }
+  }
+  //room(-1200, -400, 800, 800, [false, true, false, true])
+  runDungeon();
+}
+player.x = 0;
+player.y = 0;
+scene = "Snow Dungeon"
+loadDungeon("Snow Dungeon")
 // enery thing
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
