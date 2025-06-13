@@ -291,11 +291,11 @@ function spawnDungeonNpc(x, y, t, team, i) {
   dNpcs.push(newNpc)
 }
 function loadDungeon(to) {
-  let spawnX = 0;
-  let spawnY = 0;
   layout = layouts[to][round(random(0, layouts[to].length - 1))]
   switch(to) {
     case "Desert Dungeon":
+      let spawnX = 0;
+      let spawnY = 0;
       for(let i = 0; i < layout.length; i++) {
         if(layout[i] === 0) {
           spawnY-=800;
@@ -381,7 +381,105 @@ function loadDungeon(to) {
           spawnDungeonNpc(spawnX - 100, spawnY - 100, "Dungeon Snowman", "enemy", i)
           spawnDungeonNpc(spawnX - 100, spawnY + 100, "Dungeon Snowman", "enemy", i)
           spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Snowman", "enemy", i)
-          spawnDungeonNpc(spawnX, spawnY, "Dungeon Yeti Boss", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY, "Dungeon Molten Boss", "enemy", i)
+        }
+      }
+    break;
+    case "Elf Dungeon":
+      let spawnX = 0;
+      let spawnY = -0;
+      for(let i = 0; i < layout.length; i++) {
+        if(layout[i] === 0) {
+          spawnY-=800;
+        } else if(layout[i] === 1) {
+          spawnX-=800;
+        } else if(layout[i] === 2) {
+          spawnX+=800;
+        } else if(layout[i] === 3) {
+          spawnY+=800;
+        }
+        if(i === 0) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Elf Warrior", "enemy", i)
+        } else if(i === 1) {
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY + 50, "Dungeon Elf", "enemy")
+        } else if(i === 2) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY + 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Elf Warrior", "enemy", i)
+        } else if(i === 3) {
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Elf", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Elf", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY + 50, "Dungeon Elf", "enemy", i)
+        } else if(i === 4) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY + 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY, "Dungeon Elf", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY, "Dungeon Elf", "enemy", i)
+        } else if(i === 5) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY + 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Elf Warrior", "enemy", i)
+          spawnDungeonNpc(spawnX + 100, spawnY + 100, "Dungeon Elf", "enemy", i)
+          spawnDungeonNpc(spawnX - 100, spawnY - 100, "Dungeon Elf", "enemy", i)
+          spawnDungeonNpc(spawnX - 100, spawnY + 100, "Dungeon Elf", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Elf", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY, "Dungeon Elf Boss", "enemy", i)
+        }
+      }
+    break;
+    case "Molten Dungeon":
+      let spawnX = 0;
+      let spawnY = -0;
+      for(let i = 0; i < layout.length; i++) {
+        if(layout[i] === 0) {
+          spawnY-=800;
+        } else if(layout[i] === 1) {
+          spawnX-=800;
+        } else if(layout[i] === 2) {
+          spawnX+=800;
+        } else if(layout[i] === 3) {
+          spawnY+=800;
+        }
+        if(i === 0) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+        } else if(i === 1) {
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY + 50, "Dungeon Molten Monster", "enemy")
+        } else if(i === 2) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY + 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+        } else if(i === 3) {
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY + 50, "Dungeon Molten Monster", "enemy", i)
+        } else if(i === 4) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY + 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY, "Dungeon Molten Monster", "enemy", i)
+        } else if(i === 5) {
+          spawnDungeonNpc(spawnX + 50, spawnY + 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY + 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX + 100, spawnY + 100, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 100, spawnY - 100, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX - 100, spawnY + 100, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX + 50, spawnY - 50, "Dungeon Molten Monster", "enemy", i)
+          spawnDungeonNpc(spawnX, spawnY, "Dungeon Molten Boss", "enemy", i)
         }
       }
     break;
