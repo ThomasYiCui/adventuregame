@@ -292,10 +292,12 @@ function spawnDungeonNpc(x, y, t, team, i) {
 }
 function loadDungeon(to) {
   layout = layouts[to][round(random(0, layouts[to].length - 1))]
+  let spawnX = 0;
+  let spawnY = 0;
   switch(to) {
     case "Desert Dungeon":
-      let spawnX = 0;
-      let spawnY = 0;
+      spawnX = 0;
+      spawnY = 0;
       for(let i = 0; i < layout.length; i++) {
         if(layout[i] === 0) {
           spawnY-=800;
