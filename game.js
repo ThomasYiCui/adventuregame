@@ -337,8 +337,8 @@ function loadDungeon(to) {
       }
     break;
     case "Snow Dungeon":
-      let spawnX = 0;
-      let spawnY = -0;
+      spawnX = 0;
+      spawnY = -0;
       for(let i = 0; i < layout.length; i++) {
         if(layout[i] === 0) {
           spawnY-=800;
@@ -386,8 +386,8 @@ function loadDungeon(to) {
       }
     break;
     case "Elf Dungeon":
-      let spawnX = 0;
-      let spawnY = -0;
+      spawnX = 0;
+      spawnY = -0;
       for(let i = 0; i < layout.length; i++) {
         if(layout[i] === 0) {
           spawnY-=800;
@@ -435,8 +435,8 @@ function loadDungeon(to) {
       }
     break;
     case "Molten Dungeon":
-      let spawnX = 0;
-      let spawnY = -0;
+      spawnX = 0;
+      spawnY = -0;
       for(let i = 0; i < layout.length; i++) {
         if(layout[i] === 0) {
           spawnY-=800;
